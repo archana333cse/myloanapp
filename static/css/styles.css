@@ -1,0 +1,1643 @@
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  height: 100vh;
+}
+
+
+#loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 9999;
+}
+
+#loader-container .d-flex {
+  align-items: center;
+}
+
+#loader-container strong {
+  margin-left: 10px;
+}
+
+#loader-container .spinner-border {
+  width: 2rem;
+  height: 2rem;
+}
+
+.wrapper{
+align-items: stretch;
+display: flex;
+width: 100%;
+}
+
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  z-index: -1;
+}
+#borrowerTable{
+ 
+  max-height: 300px;
+  overflow-y: auto;
+}
+#loanTable{
+ 
+  max-height: 1000px;
+  overflow-y: auto;
+}
+#collateralTable{
+ 
+  max-height: 1000px;
+  overflow-y: auto;
+}
+#otherinfoTable{
+ 
+  max-height: 1000px;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+header {
+  background-color: rgba(1, 1, 1, 0.7);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: 30px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+
+
+
+/*nav {
+  color: #fff;
+  background-size: cover;
+}
+
+nav .menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+nav .menu a {
+  color: #ffea00;
+  text-decoration: none;
+  padding: 8px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add gradient hover effect for menu links */
+/*nav .menu a:hover {
+  background-image: linear-gradient(to right top, #004d7a, #008793, #00bf72, #a8eb12);
+  color: #fff;
+  border-radius: 5px;
+}*/
+
+
+
+
+
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.inner-container {
+  width: 100%;
+  background-color: #36d4e2;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+ 
+
+}
+
+.main-content {
+  background-color:  #36d4e2;
+  /* border: 1px solid #ccc; */
+  border-radius: 0px;
+  width: 100%;
+  padding: 2px;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.button-container {
+  /* text-align: right; */
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  /* width: 20%;
+  align-content: right;
+  margin-left: 1000px; */
+
+}
+
+.button-container button {
+  width: 180px;
+  padding: 14px 26px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right, #af1ad4, #3b007f);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  border-color: #ffea00;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add gradient hover effect for buttons */
+.button-container button:hover {
+  background-image: linear-gradient(to right, #055ffa, #af1ad4);
+  color: #fff;
+}
+
+
+.status-container {
+
+  background-color: #dce7e8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  height: auto;
+
+  max-height: 100vh;
+  overflow-y:  auto;
+
+}
+
+/* CSS to add a scrollbar to the table */
+.table-scroll-container {
+  max-height:45vh; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+/* Additional styles for the table, header, and cells */
+
+h4 {
+  font-size: 14px;
+  margin-top: 0;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #36d4e2;
+}
+
+.buttonstyle {
+  background-color: #044e55;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  
+}
+.buttonstyle:hover{
+  background-color: #b56ef8;/* Hovered tab button background color */
+
+}
+/*
+
+.edit-button {
+  background-color: #4CAF50;
+}
+
+.view-button:hover,
+.edit-button:hover {
+  background-color: #45a049;
+}
+*/
+
+
+/*edit and view button style */
+.edit-button,
+.view-button {
+padding: 8px 16px;
+margin-right: 8px;
+background-color: #4CAF50; /* Green background */
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+display: inline-block;
+text-align: center;
+text-decoration: none;
+font-size: 14px;
+transition-duration: 0.4s;
+}
+
+.edit-button:hover,
+.view-button:hover {
+background-color: white;
+color: black;
+border: 1px solid #4CAF50; /* Green border on hover */
+}
+
+
+
+
+  /* APPLICATION PAGE */
+  
+
+/* Apply margin and padding to the container to create the desired layout */
+/* Reset default margin and padding for the body and html elements */
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+/* Apply margin and padding to the container to create the desired layout */
+.container1 {
+  margin-top: 30px ;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 130px);
+  max-width:100%;
+
+}
+
+  
+  .large-box {
+    padding: 5px;
+    flex: 1;
+    background-color: #acadaf;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  .large-box h2 {
+    text-align: center;
+    margin-top: 10px;
+    
+  }
+  .heading2{
+    align-items: center;
+  }
+
+  
+
+  /* Style the tabs */
+  .tabs {
+    display: flex;
+    justify-content: flex-start; /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+  
+  }
+  
+  
+  .tab-header {
+    cursor: pointer;
+    padding: 8px 20px;
+    background-color: #f3efe7; /* Tab button background color */
+    color: #333;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 1px;
+    text-shadow: #333;
+    font-weight: bold;
+  }
+
+  /* Style the active tab */
+  .tab-header.active {
+    background-color: #59357a; /* Active tab button background color */
+    color: #fff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Lifted up effect for the active tab */
+    font-size: 18px; /* Increase font size for the active tab */
+    padding: 12px 20px; /* Increase padding for the active tab */
+  }
+
+  
+  
+  /* Hover effect for the tabs */
+  .tab-header:hover {
+    
+    background-color: #b56ef8;/* Hovered tab button background color */
+  }
+  
+  
+  /* Style the heading of the selected tab */
+  .tab-heading {
+    text-align: center;
+    margin-top: 2px;
+    font-size: 10 px;
+    font-weight:bolder;
+  }
+
+  
+  
+  .tab-content-container {
+    flex: 1;
+    overflow: auto;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+    height: 2024px;
+    margin-left:5px;/* Add scroll for content if it overflows */
+  }
+  
+  .tab-panel {
+    display: none; /* Hide all tab panels by default */
+  }
+  
+  .tab-panel.active {
+    display: block; /* Show the active tab panel */
+  }
+  
+
+
+  /* Document tab */
+
+
+
+/* Add styles for the table */
+table {
+  width: 99.2%;
+  border-collapse: collapse;
+
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+thead {
+  background-color: #167F92;
+  color: #FFF;
+}
+
+thead th {
+  padding: 10px;
+  border: 1px solid #FFF;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #d6f6fa;
+}
+tbody tr:nth-child(even) {
+  background-color: #e4f6f9;
+}
+
+
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #D9E4E6;
+  word-wrap: break-word;
+  max-width: 250px;
+  font-size: small;
+  text-align: left;
+}
+
+/* Add specific styles for the buttons */
+tbody td button {
+  padding: 8px 12px;
+  background-color: #167F92;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Make the buttons block-level elements */
+  margin: 0 auto; /* Center the buttons horizontally */
+}
+
+/* Adjust styles for the input[type="file"] */
+tbody td input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+/* Add custom style for the file input label */
+tbody td .file-upload-label {
+  padding: 8px 12px;
+  background-color: #167F92;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Make the label a block-level element */
+  margin: auto; /* Center the label and button horizontally */
+  text-align: center;
+  width: 50px; /* Set a fixed width for the label */
+}
+
+/* Style the input file button to look like a regular button */
+tbody td .file-upload-label input[type="file"] {
+  display: none;
+}
+
+/* Adjust styles for the preview button */
+/*tbody td .preview-button {
+  background-color: #FF6F00;
+}*/
+
+/* Add specific styles for the file upload message */
+.file-upload-message {
+  color: #020100;
+  font-size: 10px;
+  margin-top: 10px;
+  text-align: center; /* Center the file upload message */
+}
+
+
+
+
+.tab-content-subcontainer {
+  max-width: 800px;
+  margin: 70px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(209, 230, 78, 0.645), rgb(139, 239, 157));
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(69, 234, 195, 0.2);
+  height: 300px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Your existing CSS styles for other elements */
+
+.header-line {
+  border: none; /* Remove default line styles */
+  border-top: 3px solid #3d3d3d; /* Add a custom 1px solid line */
+  margin-top: 10px; /* Add margin for spacing */
+}
+
+
+.choose-file {
+  font-weight: bold;
+  margin-right: 5px;
+  margin-left: 20px; /* Add some spacing between the label and the input field */
+}
+
+.upload-section,
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-top: 80px;
+}
+
+.form-group select, .form-group input {
+  padding: 10px 20px;
+  border: 2px solid #248bf2;
+  border-radius: 3px;
+  margin-top: 10px;
+  
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-right: 20px;
+  margin-top: 10px;
+  text-align: center;
+
+}
+
+.form-group select {
+  flex: 1;
+}
+
+.upload-button,
+.fifth-button,
+.export-btn {
+  width: 25%;
+  color: #fff;
+  background: linear-gradient(135deg, rgb(23, 233, 173), rgb(29, 24, 208));
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.upload-button:hover,
+.export-btn:hover {
+  background: linear-gradient(135deg, rgb(86, 86, 249), rgb(23, 233, 173));
+
+}
+
+
+/* Your existing CSS styles for other elements */
+
+
+.financial-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.vertical-line {
+  width: 3px;
+  height: 300px;
+  background-color: #ccc;
+}
+
+.download-container {
+  flex: 1;
+  text-align: center;
+}
+
+.download-btn {
+  width: 25%;
+  color: #fff;
+  background: linear-gradient(135deg, rgb(23, 233, 173), rgb(29, 24, 208));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 50px;
+  /* margin-left: 20px; */
+  align-items: center;
+
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, rgb(86, 86, 249), rgb(23, 233, 173));
+}
+
+
+/* Add styles for the file name */
+.file-name {
+  margin-left: 20px;
+  color: #00bf72;
+}
+
+  .tab-panel {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .add-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+  }
+
+  .table-container {
+    margin-top: 10px; /* Add margin to move the table down */
+  }
+
+  .popup {
+    display: none;
+    position: relative;
+    top: 20px;
+    left: 100px; 
+    right:100px;
+    max-width: 90%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .popup-content {
+    background-color: white;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .popup {
+    max-width: 100%; /* Adjust the maximum width for smaller screens */
+  }
+}
+
+  .popup input[type="text"],
+  .popup input[type="number"],
+  .popup input[type="email"],
+  .popup input[type="date"] {
+    width:auto;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .popup input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  .popup button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  /* Center the submit button */
+  .popup button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  /* Styling for close icon */
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+
+
+
+  /* Add this to your existing styles.css file or in a <style> tag in your HTML */
+
+.location-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  max-height: 300px; /* Adjust the max height as needed */
+  overflow-y: auto; 
+}
+
+.location-details {
+  display: flex;
+  gap: 10px;
+}
+
+.location-details label {
+  flex: 1;
+}
+
+.abbreviated-description {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  margin-top: 10px;
+}
+
+.input-third {
+  width: calc(33.33% - 10px);
+}
+
+.input-half {
+  width: calc(50% - 5px);
+  text-align: left;
+}
+
+.label-align-right {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Add more styles as needed */
+
+
+.audit-log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.last-modified {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.last-modified-by {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.audit-log-table {
+  padding: 20px;
+}
+
+.scrollable-content {
+  max-height: 63vh; /* Adjust the percentage as needed */
+  overflow-y: auto;
+  padding: 10px; /* Add padding to improve appearance */
+}
+
+
+
+.principle-container {
+  border: 3px solid #979292;
+  padding: 15px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+#ownedPercentageSlider {
+  width: 70%;
+}
+
+#ownedPercentageValue {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#ownershipTitle {
+  flex: 1;
+  margin-left: 10px;
+}
+
+#homeAddress {
+  flex: 3;
+  height: 100px;
+}
+
+
+.tab-content {
+  height: 400px; /* Fixed height */
+  overflow-y: auto; /* Scrollable content */
+}
+
+
+/* Add this CSS to your existing stylesheet */
+.popup-content {
+  padding: 20px; /* Add padding to the popup content */
+}
+
+.popup-content label {
+  margin-bottom: 10px; /* Add margin below each label */
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="email"],
+.popup-content input[type="tel"],
+.popup-content input[type="number"],
+.popup-content textarea,
+.popup-content input[type="radio"],
+.popup-content input[type="checkbox"],
+.popup-content input[type="range"] {
+  margin-bottom: 10px; /* Add margin below each input field */
+}
+
+.popup-content h3 {
+  margin-top: 20px; /* Add margin above headings */
+}
+
+.popup-content .principle-container label {
+  margin-bottom: 10px; /* Add margin below each label within the principle container */
+}
+
+.popup-content .principle-container input[type="range"] {
+  margin-right: 10px; /* Add margin to the right of the range input */
+}
+
+.popup-content .additional-info label,
+.popup-content .additional-info input[type="number"],
+.popup-content .additional-info textarea {
+  margin-bottom: 10px; /* Add margin below labels and input fields in additional information section */
+}
+
+.popup-content .income-table th,
+.popup-content .income-table td {
+  padding: 5px; /* Add padding to table cells */
+}
+
+/* Add spacing between lines and boxes */
+.popup-content hr {
+  margin: 20px 0; /* Add margin above and below the horizontal line */
+}
+
+.popup-content .large-box {
+  margin-top: 20px; /* Add margin above the large box */
+}
+
+.popup-content .large-box label {
+  margin-bottom: 10px; /* Add margin below each label in the large box */
+}
+
+/* -------------------------------------------------------------------- */
+/* style for other form info*/
+#otherInfoForm
+{
+  max-width:auto;
+  margin: 0 auto;
+  background-color: #afe8f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Label Styles */
+label {
+display: block;
+margin-bottom: 8px;
+color: #333;
+}
+* Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"]
+{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 30px;
+}
+input[type="number"]{
+width: 50%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+height: 30px;
+
+}
+/* Radio Button Styles */
+input[type="radio"] {
+margin-right: 5px;
+}
+
+
+
+
+
+label input[type="text"] {
+width: 100%; /* Adjust the width as needed */
+margin-right: 10px;
+}
+textarea{
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 100px;
+
+}
+
+
+.textarea-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  width: 100%;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  
+}
+.description-textarea {
+  
+  width: 100%;
+  
+  
+}
+.max {
+  
+  width: 100%;
+  
+}
+span.des{
+  text-align: left;
+  font-size: smaller;
+}
+
+
+
+span.required {
+  color: red;
+  margin-left: 5px; /* Add some space between the field label and the asterisk */
+}
+
+/* Label Styles */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+
+
+
+/*===========================================================================*/
+
+
+
+
+
+
+/* #resetPasswordModal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+
+}
+
+#resetPasswordModal h1 {
+  margin-bottom: 20px;
+}
+
+#resetPasswordModal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#resetPasswordModal label {
+  font-weight: bold;
+}
+
+#resetPasswordModal input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#resetPasswordModal button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#resetPasswordModal .button:hover {
+  background-color: #0056b3;
+}
+
+#resetPasswordModal .message {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+} */
+
+/* Style for the background overlay */
+/* Style for the background overlay of the reset password popup */
+#resetPasswordPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Style for the popup content within the reset password popup */
+#resetPasswordPopup .popup-content {
+  background-color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 80%;
+}
+
+/* Style for the close button within the reset password popup */
+#resetPasswordPopup .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Style for the heading within the reset password popup */
+#resetPasswordPopup h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style for form labels within the reset password popup */
+#resetPasswordPopup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for form input fields within the reset password popup */
+#resetPasswordPopup input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style for the reset button within the reset password popup */
+#resetPasswordPopup button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Style for the reset button on hover within the reset password popup */
+#resetPasswordPopup button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style for error messages within the reset password popup */
+#resetPasswordPopup .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Center align the popup content on smaller screens within the reset password popup */
+@media screen and (max-width: 600px) {
+  #resetPasswordPopup .popup-content {
+    width: 90%;
+  }
+}
+
+
+/* Styling for the popup form */
+#popupForm {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #cbfeff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-width: 100%;
+}
+
+#popupForm .popup-content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#popupForm h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* Styling for the close icon */
+#closeApplicationForm {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #000;
+}
+
+/* Styling for form elements */
+#applicationForm label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#applicationForm input[type="text"],
+#applicationForm input[type="number"] {
+  width: 70%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#applicationForm button[type="submit"] {
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#applicationForm button[type="submit"]:hover {
+  background-color: #0062b3;
+}
+
+
+/* =========================================================== */
+
+
+#tab5 h1 {
+  color: #333;
+  text-align: left; /* Left-align the heading */
+  margin-left: 40px;
+}
+
+
+
+#tab5 #fourth-button {
+  width: 25%;
+}
+
+#tab5 input[type="file"] {
+  margin-bottom: 10px;
+}
+
+#tab5 .buttons {
+  /* text-align: left;  */
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+#tab5 input[type="submit"], /* Style for the Upload File button */
+#tab5 input[type="button"],
+#tab5 input [type="date"]
+/* Style for the other buttons */ {
+  background-color: #38618d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: auto 30px; /* Add some spacing between buttons */
+  width: 10%; /* Make all buttons cover the form area */
+}
+
+#tab5 input[type="submit"] {
+  width: auto; /* Reset the width for the Upload File button */
+  background-color: #38618d;
+  margin-right: 0; /* Reset margin for Upload File button */
+}
+
+#tab5 input[type="submit"]:hover,
+#tab5 input[type="button"]:hover {
+  background-color: #38618d;
+}
+/* Style the dropdown */
+#tab5 .dropdown {
+  background-color: #38618d;
+  color: white;
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  width: 12%;
+  border-radius: 5px;
+  height: 40px;
+  margin-left: 50px;
+  align-items: center;
+}
+
+
+
+#tab5 .dropdown-content {
+  align-items: center;
+  display: none;
+  position: absolute;
+  background-color: #c1e0e7;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  max-height: 350px; /* Set the maximum height for the dropdown content */
+ /* overflow-y: auto;  Add a vertical scrollbar when content exceeds the maximum height */
+}
+#tab5 .dropdown-content .dropdown-item{
+  white-space: nowrap; /* Prevent text from wrapping */
+overflow: hidden; /* Hide overflowing content */
+text-overflow: ellipsis; /* Display an ellipsis (...) when text overflows */
+max-height: 40px; /* Set the fixed height for each dropdown item */
+
+
+}
+#tab5 .dropdown a{ 
+  align-items: center;
+}
+
+#tab5 .dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+#tab5 .dropdown-content a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#tab5 .dropdown:hover .dropdown-content {
+display: block;
+}
+#tab5 .dropbtn{
+max-height: 40px; /* Set the fixed height for the selected item */
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
+
+#tab5 .dropdown:hover .dropbtn {
+  background-color: #0056b3;
+}
+/* ... Your existing CSS ... */
+
+#tab5 .document-list {
+  margin: 20px auto;
+  width: 90%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+
+#tab5 .document-list h1 {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+#tab5 .document-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+#tab5 .document-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#tab5 .document-list li span {
+  flex: 1;
+}
+
+/*#tab4 .document-list .view-button,*/
+#tab5 .document-list .edit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#tab5 .document-list .view-button:hover,
+#tab5 .document-list .edit-button:hover {
+  background-color: #0056b3;
+}
+#tab5 .document-list {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#tab5 .document-list h1 {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+#tab5 .document-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+#tab5 .document-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#tab5 .document-list li span {
+  flex: 1;
+}
+
+/*#tab5 .document-list .view-button,*/
+#tab5 .document-list .edit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#tab5 .document-list .view-button:hover,
+#tab5 .document-list .edit-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/*#tab6 style===================================*/
+#tab6 {
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+
+}
+
+.final-instruction {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.final-instruction p {
+  font-size: smaller;
+  color: #333;
+}
+
+#tab6 h2 {
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+input[name="preview-button"] {
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 50%;
+}
+
+input[name="preview-button"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+.tabs {
+  flex-direction: column;
+}
+
+.tab {
+  width: 100%;
+  box-sizing: border-box;
+}
+.tab-header button {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Add spacing between buttons */
+}
+
+.button, h2, p {
+  width: 80%;
+  box-sizing: border-box;
+  margin-bottom: 10px; 
+  margin-left: 0px;
+}
+
+.table th, .table td {
+  font-size: 14px;
+}
+}
+
+/* Responsive styles for specific buttons */
+@media (max-width: 600px) {
+.add-borrower-button,
+.add-loan-button,
+.add-collateral-button {
+  width: 40%;
+  box-sizing: border-box;
+  margin-right: 0px;
+  margin-bottom: 10px; /* Add spacing between buttons */
+}
+}
+
+/* Responsive Design for Upload Documents Tab */
+@media (max-width: 600px) {
+#tab5 {
+  padding: 10px; /* Add padding to the tab content */
+}
+
+#documentForm h1, #documentList h1 {
+  font-size: 1.2em; /* Adjust heading font size */
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dropdown {
+  flex-basis: calc(50% - 5px); /* Adjust dropdown width for smaller screens */
+}
+
+
+
+#uploadButton {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.document-list {
+  padding: 10px;
+}
+
+#ExistingDocs th,
+#ExistingDocs td {
+  font-size: 0.9em; /* Adjust table cell font size */
+}
+}
+/* Responsive Design for Input Elements */
+@media (max-width: 600px) {
+/* Adjust hidden input font size and padding */
+input[type="hidden"] {
+  width: 100%;
+  font-size: 1em;
+  padding: 5px;width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: inline-block; /* Fix button display issue */
+}
+
+/* Style for buttons */
+input[type="button"],
+input[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: inline-block; /* Fix button display issue */
+}
+
+/* Style for file input and associated buttons */
+input[type="file"],
+#second-button,
+#forth-button,
+#third-button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: inline-block; /* Fix button display issue */
+}
+
+/* Style for dropdowns */
+.dropdown {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.dropdown a {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1em;
+  text-align: left;
+}
+
+.dropdown-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+}
+
+
+
+
+
+
+

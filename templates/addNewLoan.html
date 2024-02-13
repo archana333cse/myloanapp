@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Loan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/addNewLoan.css">
+</head>
+<body>
+    <div class="background-image"></div>
+
+    <!-- Navbar content -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/logo.png" alt="" style="height: 40px; width: 200px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="empDashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Analytics</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Utilities
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Send link to borrower</a></li>
+              <li><a class="dropdown-item" href="#">Download Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Upload Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Download Consolidated Income Statement</a></li>
+              <li><a class="dropdown-item" href="#">Audit Log</a></li>
+
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ">Profile</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--===============================================================================================-->
+
+  <div class="container1">
+    <div class="tabs text-center">
+      
+      <span class="des">
+        Please complete the form accurately. For individual applicants, provide personal details, contact, and
+        financial information. For business entities, furnish business specifics, tax details, and contact information.
+        Ensure all required fields are filled.
+      </span>
+    </div>
+    
+      
+    
+    <div class="large-box">
+      <div id="addNewLoanTabContainer" class="tab-content-container">
+        <!-- Popup content -->
+    <div class="popup-overlay" id="loanpopupOverlay">
+        <div class="popup" id="loanPopup">
+          <div class="table-container" style="max-height: 480px; overflow-y: auto;">
+          <div class="popup-content">
+            <h2>Add New Loan</h2>
+            
+            
+            <form id="loanForm">
+              <label>
+                Amount Requested<span class="required">*</span>: <br>
+                <input type="number" name="amountRequested" required placeholder="enter amount requested">
+              </label>
+              <br>
+              <label>
+                Projected Loan-to-Value<span class="required">*</span>: <br>
+                <input type="text" name="loanToValue" required placeholder="enter projected loan-to-value">
+              </label>
+              <br>
+              <label>
+                Requested Close Date<span class="required">*</span>: <br>
+                <input type="date" name="closeDate" required>
+              </label>
+              <br>
+              <label>
+                Payment Frequency<span class="required">*</span>:
+                <input type="radio" name="paymentFrequency" value="monthly" required> Monthly
+                <input type="radio" name="paymentFrequency" value="quarterly"> Quarterly
+                <input type="radio" name="paymentFrequency" value="semi-annual"> Semi-Annual
+                <input type="radio" name="paymentFrequency" value="annual"> Annual
+              </label>
+              <br>
+              <label>
+                Loan Purpose<span class="required">*</span>:
+                <input type="radio" name="loanPurpose" value="purchaseRealEstate" required> Purchase Real Estate
+                <input type="radio" name="loanPurpose" value="refinanceRealEstate"> Refinance Real Estate
+                <input type="radio" name="loanPurpose" value="cashOut"> Cash Out
+                <input type="radio" name="loanPurpose" value="other"> Other
+                <br>
+                If Other, Specify<span class="required">*</span>: <br>
+                <input type="text" name="otherPurpose" placeholder="Specify other purpose"><br> 
+              </label>
+              <br>
+              <label class="table-label">
+                Use of Funds:
+                <table id="useOfFundsTable">
+                    <thead>
+                        <tr>
+                          <th colspan="2">Source of Funds</th>
+                          <th colspan="2">Use of Funds</th>
+                        </tr>
+                        <tr>
+                          
+                          <th>Description</th>
+                          <th>Amount ($)</th>
+                          <th>Description</th>
+                          <th>Amount ($)</th>
+                        </tr>
+                      </thead>
+                  <tbody>
+                    <tr>
+                        <td><input type="text" name="sourceOfFunds1" required></td>
+                        <td><input type="number" name="sourceOffundsAmount1" required></td>
+                        
+                        <td><input type="text" name="useOfFunds1" required></td>
+                        <td><input type="number" name="useOfFundsAmount1" required></td>
+                        
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="sourceOfFunds2"></td>
+                        <td><input type="number" name="sourceOffundsAmount2"></td>
+                                               
+                        <td><input type="text" name="useOfFunds2"></td>
+                        <td><input type="number" name="useOfFundsAmount2"></td>
+                        
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="sourceOfFunds3"></td>
+                        <td><input type="number" name="sourceOffundsAmount3"></td>
+                        
+                        <td><input type="text" name="useOfFunds3"></td>
+                        <td><input type="number" name="useOfFundsAmount3"></td>
+                        
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="sourceOfFunds4" placeholder="Other if any-"></td>
+                        <td><input type="number" name="sourceOffundsAmount4"></td>
+                        
+                        <td><input type="text" name="useOfFunds4" placeholder="Other if any-"></td>
+                        <td><input type="number" name="useOfFundsAmount4"></td>
+                        
+                      </tr>
+                  </tbody>
+                </table>
+              </label>
+              <br>
+              <label>
+                Loan Product<span class="required">*</span>: <br>
+                <input type="text" name="loanProduct" placeholder="e.g. 20 yr fixed" required>
+              </label>
+              <br>
+              <label>
+                Requested Years Amortized<span class="required">*</span>:
+                <input type="radio" name="yearsAmortized" value="5" required> 5
+                <input type="radio" name="yearsAmortized" value="10"> 10
+                <input type="radio" name="yearsAmortized" value="15"> 15
+                <input type="radio" name="yearsAmortized" value="20"> 20
+                <input type="radio" name="yearsAmortized" value="25"> 25
+                <input type="radio" name="yearsAmortized" value="30"> 30
+              </label>
+              <br>
+              <div class="button-container">
+                <button id="closeButton" type="button" class="buttonstyle" onclick="closeForm()">Close</button>
+              <button type="submit" class="buttonstyle">Submit</button>
+            </div>
+            
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="/static/js/addNewLoan.js" defer></script>
+</body>
+</html>

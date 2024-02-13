@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Info</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/otherInfor.css">
+</head>
+<body>
+    <div class="background-image"></div>
+  <!--===============================================================================================-->
+
+  <div class="container1">
+    <div class="tabs text-center">
+        
+        <span class="des">Please complete the form accurately. For individual applicants, provide personal details, contact, and
+          financial information. For business entities, furnish business specifics, tax details, and contact
+          information.
+          Ensure all required fields are filled.</span>
+    </div>
+    <div class="large-box">
+        <div class="tab-content-container">
+
+            <div id="tab4" class="tab-panel">
+                <h2>Additional Infromation</h2>
+                <div class="scrollable-content">
+                  <div class="applicant-questions">
+                    <form  id="editOtherInfoForm" method="POST", action="/update_otherInfo">
+                      <b>The following questions apply to all applicants:</b><br><br>
+                      <table class="question-table">
+                        <tr>
+                          <td>Are there any unjustified judgments against you? <span class="required">*</span></td>
+                          <td><input type="radio" name="judgments" value="yes" required> Yes <input type="radio" name="judgments"
+                              value="no"  required> No</td>
+      
+                        </tr>
+                        <tr>
+                          <td>Are you a defendant in any lawsuits or pending lawsuits?<span class="required">*</span></td>
+                          <td><input type="radio" name="lawsuits" value="yes" required> Yes <input type="radio" name="lawsuits"
+                              value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Are any accounts past due?<span class="required">*</span></td>
+                          <td><input type="radio" name="pastDue" value="yes" required> Yes <input type="radio" name="pastDue"
+                              value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Have you ever declared bankruptcy?<span class="required">*</span></td>
+                          <td><input type="radio" name="bankruptcy" value="yes"required> Yes <input type="radio" name="bankruptcy"
+                              value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Have you had any property foreclosed or transferred by a deed in lieu of foreclosure in the past
+                            7 years?<span class="required">*</span></td>
+                          <td><input type="radio" name="foreclosure" value="yes" required> Yes <input type="radio" name="foreclosure"
+                              value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Do any borrowers have assets pledged as security for debt of others?<span class="required">*</span></td>
+                          <td><input type="radio" name="assetsPledged" value="yes" required> Yes <input type="radio"
+                              name="assetsPledged" value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Do any borrowers have contingent liabilities or have they endorsed or guaranteed notes for
+                            others?<span class="required">*</span></td>
+                          <td><input type="radio" name="contingentLiabilities" value="yes" required> Yes <input type="radio"
+                              name="contingentLiabilities" value="no" required > No</td>
+                        </tr>
+                        <tr>
+                          <td>Are any borrowers obligated to pay alimony or child support?<span class="required">*</span></td>
+                          <td><input type="radio" name="alimonyChildSupport" value="yes" required> Yes <input type="radio"
+                              name="alimonyChildSupport" value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Do any borrowers have a > 25% interest in other companies?<span class="required">*</span></td>
+                          <td><input type="radio" name="interestInCompanies" value="yes" required> Yes <input type="radio"
+                              name="interestInCompanies" value="no" required> No</td>
+                        </tr>
+                        <tr>
+                          <td>Is there a residence on the collateral?<span class="required">*</span></td>
+                          <td><input type="radio" name="residenceOnCollateral" value="yes" required> Yes <input type="radio"
+                              name="residenceOnCollateral" value="no" required> No</td>
+                        </tr>
+                      </table>
+                      <br><br>
+      
+                      <label>If you answered "Yes" to any of the above questions, please provide details:<span class="required">*</span></label>
+                      <div class="textarea-container">
+                      <label>
+
+                      <textarea name="details" id="details" ></textarea><br>
+                    </label>
+                    <span class="max">(maximum 255 characters)</span>
+
+                </div>
+
+      
+                      <label>Existing Client of originator?<span class="required">*</span></label>
+                      <input type="radio" name="existingClient" value="yes" id="yesRadio">  Yes (Year Begin: <br><input
+                        type="number" name="existingClientYear" id="yearInput">) <br>
+                      <input type="radio" name="existingClient" value="no" id="noRadio"> No
+                      <br>
+                      <label>Total acres owned:<span class="required">*</span></label>
+                      <input type="number" name="totalAcresOwned"><br>
+                      <label>Total acres rented:<span class="required">*</span></label>
+                      <input type="number" name="totalAcresRented"><br>
+                      <label>Upload relevant document:<span class="required">*</span></label>
+                      <input type="file" class="file-upload-label" name="documentUpload"><br>
+                      <div class="button-container">
+                      <button type="submit" class="buttonstyle" onclick="closeForm()">Close</button>
+                      <button type="submit" class="buttonstyle">Submit</button>
+                    </div>
+      
+                    </form>
+                  </div>
+
+            </div>
+            </div>
+    </div>
+    <script src="/static/js/editOtherinfo.js"></script>
+  
+</body>
+</html>

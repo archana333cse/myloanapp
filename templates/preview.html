@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Applicant Data Preview</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/preview.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
+</head>
+<body>
+    <div id="preview-content">  
+
+        <h1>Borrower Information</h1>
+
+        <!-- Loan Information Section -->
+        <section id="borrowerInfo">
+            <!-- Loan Information will be populated here -->
+        </section>
+
+        <h1>Loan Information</h1>
+        <!-- Loan Information Section -->
+        <section id="loanInfo">
+            <!-- Loan Information will be populated here -->
+        </section>
+        
+        <h1>Collateral Information</h1>
+        <!-- Collateral Information Section -->
+        <section id="collateralInfo">
+            <!-- collateral Information will be populated here -->
+        </section>
+
+        <!-- Other Information Section -->
+        <h1>Other Info</h1>
+        <section id="otherInfo">
+            <!-- other Information will be populated here -->
+        </section>
+
+        <section id="docUploadTable">
+            <div class="document-list" id="documentList">
+                <h1>Previously Uploaded Documents</h1>
+                <table id="ExistingDocs">
+                <thead>
+                    <tr>
+                    <th>A ID </th>
+                    <th>Loan ID</th>
+                    <th>File Category</th>
+                    <th>File Description</th>
+                    <th>Doc Name</th>
+                    <th>Doc Date As of</th>              
+                    </tr>
+                </thead>
+                <tbody id="doctablebody">
+
+                </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div class="button-container">
+        <button onclick="generatePDF()" class="buttonstyle" id="downloadBtn">Download as PDF</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="sendToInvestor()" class="buttonstyle" id="sendApplicationBtn">Send application to Investor</button>
+    </div>
+
+    <script src="/static/js/preview.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+</body>
+
+</html>

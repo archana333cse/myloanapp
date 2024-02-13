@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="/static/css/resetPass.css">
+</head>
+
+<body>
+
+  <div class="reset-password-container">
+    <h2>Reset Password</h2>
+    <div id="reset-error-message"></div>
+    <form id="resetPasswordForm" method="POST" action="/set_password">
+      <label for="securityQuestion">Security Question:</label>
+      <select id="securityQuestion" name="securityQuestion" required>
+        <option value="" disabled selected>Select a security question</option>
+        <option value="What is your favorite color?">What is your favorite color?</option>
+        <option value="In which city were you born?">In which city were you born?</option>
+        <option value="What is your pet's name?">What is your pet's name?</option>
+        <option value="What is your favorite movie?">What is your favorite movie?</option>
+        <option value="Who is your favorite author?">Who is your favorite author?</option>
+      </select>
+
+      <label for="answer">Answer:</label>
+      <input type="text" id="answer" name="answer" required>
+
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" name="newPassword" required>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+      <button type="submit">Reset Password</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

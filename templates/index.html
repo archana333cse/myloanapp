@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Financial Statements</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            background-image: url("https://img.freepik.com/free-vector/network-mesh-wire-digital-technology-background_1017-27428.jpg?w=1060&t=st=1690179936~exp=1690180536~hmac=47392dcedead0e4a3abd49554b9f3c4865249c1a778570a242e977abe08074a0");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 70px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(209, 230, 78, 0.645), rgb(139, 239, 157));
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(69, 234, 195, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 16 px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-right: 20px;
+            margin-top: 10px;
+          
+        }
+
+        .form-group select, .form-group input {
+            padding: 10px 20px;
+            border: 2px solid #45c8e2;
+            border-radius: 5px;
+            margin-top: 10px;
+            
+        }
+
+        .form-group select {
+            flex: 1;
+        }
+
+        /* Export Button Styling */
+        input[type="submit"],
+        button {
+            width: 30%;
+            color: #fff;
+            background: linear-gradient(135deg, rgb(23, 233, 173), rgb(29, 24, 208));
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 5px;
+            margin-left: 100px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background: linear-gradient(135deg, rgb(29, 24, 208), rgb(23, 233, 173));
+            margin-left: 100px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        .navbar a:hover {
+            background: linear-gradient(135deg, rgba(209, 230, 78, 0.645), rgb(139, 239, 157));
+
+            color: black;
+        }
+
+        .navbar .logo {
+            max-width: 130px;
+        }
+
+        /* styles.css */
+.popup-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.popup-message p {
+    margin: 0;
+}
+
+.popup-message .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    cursor: pointer;
+}
+
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer a {
+            display: inline-block;
+            margin: 0 10px;
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        .footer .website-icon {
+            background-image: url("https://cdn-icons-png.flaticon.com/128/1006/1006771.png");
+        }
+
+        .footer .linkedin-icon {
+            background-image: url("https://cdn-icons-png.flaticon.com/128/3536/3536505.png");
+        }
+
+
+        /* Logo */
+        .logo {
+            display: block;
+            margin: 10px;
+            max-width: 150px;
+        }
+ </style>
+</head>
+<body>
+
+    <form method="post" action="/start_loader">
+        <button type="submit" name="submit_button" value="Start Loader">Start Loader</button>
+    </form>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <img class="logo" src="https://gofin.ai/wp-content/uploads/2022/10/GoFin-Data-Solutions-1.png" alt="GoFin Data Solutions">
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Downloads</a>
+        </div>
+    </div>
+
+<!-- Single Container for Loan Application -->
+<div class="container">
+    <h1>Financial Statements</h1>
+    <div class="form-group">
+        <label for="loan-id">Loan ID:</label>
+        <select id="loan-id">
+            <option value="Select LoanId">Select Loan Id</option>
+        </select>
+        <button class="export-btn" onclick="exportData()">Export</button>
+    </div>
+</div>
+
+    <!-- Popup Message for Export Success -->
+    <div id="exportSuccessMessage" class="popup-message">
+        <span class="close" onclick="hidePopup()">&times;</span>
+        <p>Data export was successful!</p>
+    </div>
+
+    <!-- Popup Message for Export Failure -->
+    <div id="exportFailedMessage" class="popup-message">
+        <span class="close" onclick="hidePopup()">&times;</span>
+        <p>Data export failed. Please try again.</p>
+    </div>
+
+    <script>
+        // Function to fetch loan IDs dynamically based on the selected container
+       // Function to fetch loan IDs dynamically based on the selected container
+async function fetchLoanIds() {
+    try {
+        const response = await fetch(`/loan_ids`);
+        const data = await response.json();
+        const selectElement = document.getElementById("loan-id");
+        selectElement.innerHTML = '<option value="Select LoanId">Select Loan Id</option>'; // Reset dropdown options
+        data.forEach(loanId => {
+            const option = document.createElement("option");
+            option.value = loanId;
+            option.textContent = loanId;
+            selectElement.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error fetching loan IDs:", error);
+    }
+}
+// Function to trigger data export based on the selected container and loan ID
+async function exportData() {
+    const loanIdSelect = document.getElementById("loan-id");
+    const loanId = loanIdSelect.value;
+
+    if (loanId === "Select LoanId") {
+        alert("Please select a valid Loan ID.");
+        return;
+    }
+
+    try {
+        // Perform data export using AJAX to the appropriate endpoint
+        const response = await fetch(`/export-data/${loanId}`);
+        const blob = await response.blob();
+
+        // Create a temporary link to save the file
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${loanId}_financial_statements.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+
+        // Clean up
+        window.URL.revokeObjectURL(url);
+
+        // Show export success message
+        showPopup('exportSuccessMessage');
+    } catch (error) {
+        console.error("Error exporting data:", error);
+
+        // Show export failed message
+        showPopup('exportFailedMessage');
+    }
+}
+
+// Fetch loan IDs for Loan Application container on page load
+fetchLoanIds();
+    </script>
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#" class="website-icon"></a>
+        <a href="#" class="linkedin-icon"></a>
+        <!-- Add more social links as needed -->
+    </div>
+   
+</body>
+</html>

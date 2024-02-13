@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    
+    
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/empDashboard.css">
+    <script src="/static/js/loader.js"></script>
+</head>
+
+<body>
+    <!-- Loader Container -->
+  <div id="loader-container" class="d-none" >
+    <div class="d-flex align-items-center">
+        <strong role="status">Loading...</strong>
+        <div class="spinner-border ms-auto" aria-hidden="true"></div>
+    </div>
+</div>
+    <!-- ======== Main wrapper for dashboard =========== -->
+    <div class="wrapper">
+        <!-- =========== Sidebar for admin dashboard =========== -->
+        <aside id="sidebar" class="js-sidebar">
+            <!-- ======== Content For Sidebar ========-->
+            <div class="h-100">
+                <!-- ======= Navigation links for sidebar ======== -->
+
+                <div class="sidebar-logo">
+                    <a href="#"><img src="/static/images/logo.png" alt="logo_img"></a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                       Employee's Dashboard
+                    </li>
+                    <li class="sidebar-item" id="dashboardElement">
+                        <a href="empDashboard.html" class="sidebar-link">
+                            <i class="fa-solid fa-list"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-item" id="analyticsElement">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#analytics" >
+                            <i class="fa-solid fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    
+                    
+                    </li>
+                    <li class="sidebar-item" id="existingElement">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#existingApplication" id="showExistingApplicationButton" title="Click here to see existing application">
+                            <i class="fa-solid fa-table"></i>
+                            Existing Application 
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="sidebar-item" id="resetPasswordElement">
+                       
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#resetPass" id="resetPasswordButton" title="Click here to reset your password for the security purpose">
+                            <i class="fa-solid fa-key"></i>
+                            Reset Password</a>
+
+
+
+                    </li>
+                    <li class="sidebar-item" id="addEmployeeElement">
+                        
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#addNew" id="startApplicationButton" title="click here to add new application">
+                            <i class="fa-solid fa-square-plus"></i>
+                            Add New Application</a>
+
+
+
+                    </li>
+                    <li class="sidebar-item" id="logoutElement">
+
+                        <a href="landingpage.html" class="sidebar-link collapsed" data-bs-target="#logout"
+                            title="Click here to logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            logout </a>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </aside>
+        <!-- ========= Main section of dashboard ======= -->
+        <div class="main">
+            <!-- ========= Main navbar section of dashboard ======= -->
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="/static/images/profile.jpg" class="avatar img-fluid rounded" alt="">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" id="profileElement">
+                                <a href="#" class="dropdown-item">Profile</a>
+                                <a href="landingpage.html" class="dropdown-item">Logout</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- ========= Main content section of dashboard ======= -->
+
+            <main class="content px-3 py-2">
+
+                <div class="container-fluid">
+                    <div class="mb-3" id="hideElement1">
+                        <h4>Company Employee Dashboard</h4>
+                    </div>
+
+                    <div class="row" id="hideElement2">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card flex-fill border-0 illustration">
+                                <div class="card-body p-0 d-flex flex-fill">
+                                    <div class="row g-0 w-100">
+                                        <div class="col-6">
+                                            <div class="p-3 m-1">
+                                                <h4>Welcome, user_name! </h4>
+                                                <p class="mb-0">
+                                                    We're delighted to have you on board.
+                                                    Your financial journey begins here. Explore your personalized
+                                                    dashboard. 
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6 align-items-end text-end">
+                                            <img src="/static/images/wel.png" alt="welcome-user"
+                                                class="img-fluid illustration illustration-img">
+                                        </div>
+
+
+
+                                        <div class="col-6 align-self-end text-end">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card flex-fill border-0">
+                                <div class="card-body py-4">
+
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-grow-1">
+                                            <h4 class="mb-2">
+                                                Welcome To Fast & Easy Funding!
+                                            </h4>
+
+                                            <p class="mb2">
+                                                Experience rapid and hassle-free funding with our loan website. Swift
+                                                approvals, seamless applications, and user-friendly navigation make
+                                                securing funds a breeze. Empower your financial journey with our fast
+                                                and easy lending platform.
+                                            </p>
+                                            <div class="mb-0">
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Element -->
+                    <div id="showExistingApplication"  style="
+                    display: none;">
+                        
+                    <div class="card border-0" id="hideElement3">
+                        <div class="card-header">
+                            <h5 class="card-title"> Existing Applications</h5>
+                            <h6 class="card-subtitle text-muted">
+                                Discover our list of active applications. Find opportunities, connect, and be part of our successful community.
+
+                            </h6>
+
+                        </div>
+                        <div class="card-body " >
+                            <table class="table table-striped table-hover">
+                                <table class="table scrollable-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Loan ID</th>
+                                            <th scope="col">Borrower Name</th>
+                                            <th scope="col">Loan Amount</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="table-body">
+                                        <!-- Table rows here -->
+
+                                    </tbody>
+                                </table>
+                            </table>
+
+                        </div>
+                    </div>
+                
+                </div>
+
+                <!-- Profile Section -->
+<div id="profileSection" style="display: none;">
+   
+    <h4>User Profile</h4>
+    
+    <hr>
+    <div class="profileContainer">
+        <div class="profileDetails">
+            <p><strong>Emp ID:</strong> <span id="empId"></span></p>
+            <p><strong>User Name:</strong> <span id="userName"></span></p>
+            <p><strong>Company ID:</strong> <span id="compId"></span></p>
+            <p><strong>Name:</strong> <span id="empName"></span></p>
+            <p><strong>Email:</strong> <span id="empEmail"></span></p>
+            <p><strong>Contact:</strong> <span id="empContact"></span></p>
+        </div>
+        <div class="profilePictureContainer">
+            <img id="profilePicture" src="/static/images/profile1.png" alt="Profile Picture">
+        </div>
+    </div>
+</div>
+
+                    <div id="addNewApplicationForm" style="display: none;">
+                        
+
+                        <div class="content clearfix">
+
+                            <div class="form-new-application">
+                                <!-- Close icon for the form -->
+
+                                <div class="registration-icon">
+                                    <!-- Insert your loan or finance-related image here -->
+                                    <img src="/static/images/reg.png" id="icon">
+                                </div>
+                                <h2>New Application</h2>
+                                <form id="applicationForm" action="/start_application">
+                                    <label for="borrowerName">Borrower Name:</label>
+                                    <input type="text" id="borrowerName" name="borrowerName" required>
+
+                                    <label for="amountRequested">Amount Requested:</label>
+                                    <input type="number" id="amountRequested" name="amountRequested" required>
+
+                                    <label for="CompId">Company Id:</label>
+                                    <input type="number" id="CompId" name="CompId" required>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="resetPasswordForm" style="display: none;">
+                        
+
+                        <div class="content clearfix">
+                            
+                            <div class="form-new-application">
+
+                                <h2>Reset Password</h2>
+                                <form id="resetpasswordform" action="/cemp_reset_password" method="POST">
+                                    <!-- <input type="hidden" id="user_id" name="user_id" value="{{ user_id }}"> -->
+                                    <label for="oldPassword">Old Password</label>
+                                    <input type="password" id="oldPassword" name="oldPassword" required>
+    
+                                    <label for="npassword">New Password</label>
+                                    <input type="password" id="npassword" name="npassword" required>
+    
+                                    <label for="cPassword">Confirm Password</label>
+                                    <input type="password" id="cPassword" name="cPassword" required>
+                           
+                                    <button type="submit" class="buttonstyle">Reset Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="showAnalytics" style="display: none;">
+                        <!-- Blank content or placeholder for Analytics section -->
+                    </div>
+                    
+                    <div id="showUtilities" style="display: none;">
+                        <!-- Blank content or placeholder for Utilities section -->
+                    </div>
+
+
+                </div>
+            </main>
+
+
+
+            <!-- ========= light and dark mode toggle button ======= -->
+            <a href="#" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+            <!-- ========= footer section of dashboard ======= -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a href="#" class="text-muted">
+                                    <img src="/static/images/logo.png" alt="Logo_img">
+                                </a>
+
+
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Contact</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">About Us</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Terms & Conditions</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/empDashboard.js"></script>
+
+
+</body>
+
+</html>

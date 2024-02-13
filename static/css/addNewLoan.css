@@ -1,0 +1,345 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    height: 100vh;
+}
+.tabs1 p{
+    font-size: smaller;
+    align-items: left;
+}
+  
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    z-index: -1;
+}
+
+
+
+
+/* Form Container Styles */
+#loanForm
+ {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #afe8f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Header Styles */
+h3 {
+    color: #104c8d;
+}
+
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Input Styles */
+input[type="text"],
+
+input[type="email"],
+input[type="tel"],
+input[type="date"]
+ {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 30px;
+}
+input[type="number"]{
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 30px;
+
+}
+
+span.des{
+  text-align: left;
+  font-size: smaller;
+}
+
+textarea{
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 100px;
+
+}
+
+
+
+/* Radio Button Styles */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+#useOfFundsTable {
+    
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  #useOfFundsTable th, #useOfFundsTable td {
+    text-align: center;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  #useOfFundsTable th {
+    background-color: #f2f2f2;
+  }
+  
+  #useOfFundsTable input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  /* Optional: Add some additional styling for better aesthetics */
+  .table-label{
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Optional: Style for responsive tables on smaller screens */
+  @media (max-width: 600px) {
+    #useOfFundsTable {
+      border: 0;
+    }
+  
+    #useOfFundsTable th, #useOfFundsTable td {
+      border: 1px solid #ddd;
+      display: block;
+      text-align: left;
+    }
+  
+    #useOfFundsTable th {
+      background-color: #f2f2f2;
+    }
+  
+    #useOfFundsTable td {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+      padding-left: 50%;
+    }
+  
+    #useOfFundsTable td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      content: attr(data-label);
+      font-weight: bold;
+    }
+  }
+  
+
+/* Button Style */
+.buttonstyle {
+    background-color: #2e5885;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+   margin-right: 0px;
+    width: 150px;
+    
+}
+
+label input[type="text"] {
+    width: 60%; /* Adjust the width as needed */
+    margin-right: 10px;
+  }
+/* Button Container Styles */
+.button-container {
+    text-align: right;
+}
+
+.buttonstyle:hover {
+    background-color: #0056b3;
+}
+
+
+  
+  span.required {
+    color: red;
+    margin-left: 5px; /* Add some space between the field label and the asterisk */
+  }
+
+  label input[name="streetAddress"] {
+    width: 60%; /* Adjust the width as needed */
+  }
+  
+  
+  
+
+
+
+
+
+
+
+
+/* Additional styles for the table, header, and cells */
+
+
+/* form table style*/
+.popup-overlay .popup-content .form-table {
+    border: none;
+}
+
+
+    
+
+
+
+
+/* APPLICATION PAGE */
+
+
+/* Apply margin and padding to the container to create the desired layout */
+/* Reset default margin and padding for the body and html elements */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply margin and padding to the container to create the desired layout */
+.container1 {
+
+    margin: 30px 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+    margin-right: 5px;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+
+}
+
+
+
+.large-box {
+    padding: 5px;
+    flex: 1;
+    background-color: #acadaf;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.large-box h2 {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.container1 h2 {
+    align-items: center;
+    margin-left: 5px;
+}
+
+/* Style the tabs */
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    
+
+
+}
+.tabs1 {
+    display: flex;
+    justify-content: flex-start;
+    /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+    
+
+
+}
+.tabs h2 {
+    display: inline-block;
+  }
+
+
+
+
+
+
+.tab-content-container {
+    flex: 1;
+    overflow: auto;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* Add scroll for content if it overflows */
+}
+
+
+
+.tab-content {
+    height: 400px;
+    /* Fixed height */
+    overflow-y: auto;
+    /* Scrollable content */
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Loan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/addNewLoan.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+</head>
+
+<body>
+  <div class="background-image"></div>
+
+ 
+
+  <div class="container1">
+    <div class="tabs text-center">
+
+      <span class="des">
+        Please accurately provide personal, contact, and financial details in the form. Completing all fields ensures a
+        seamless loan application. Your precise information is crucial for a successful application process. 
+        Ensure all required fields are filled.
+      </span>
+    </div>
+
+
+
+    <div class="large-box">
+      <div class="tab-content-container">
+        <!-- Popup content -->
+        <div class="popup-overlay" id="loanpopupOverlay">
+          <div class="popup" id="loanPopup">
+            <div class="popup-content">
+              <h2>Add New Loan</h2>
+
+              <form id="loanEditForm" action="/updateLoan" method="POST"></form>
+              <label>
+                Amount Requested<span class="required">*</span>: <br>
+                <input type="number" name="amount_requested" id="amount_requested"  placeholder="enter amount requested" readonly>
+              </label>
+              <br>
+              <label>
+                Projected Loan-to-Value<span class="required">*</span>: <br>
+                <input type="text" name="projected_loan_to_value"  id="projected_loan_to_value"  placeholder="enter projected loan-to-value">
+              </label>
+              <br>
+              <label>
+                Requested Close Date<span class="required">*</span>: <br>
+                <input type="date" name="requested_close_date"  id="requested_close_date" >
+              </label>
+              <br>
+              <label>
+                Payment Frequency<span class="required">*</span>:
+                <input type="radio" name="payment_frequency" id="payment_frequency" value="monthly" > Monthly
+                <input type="radio" name="payment_frequency" id="payment_frequency" value="quarterly" > Quarterly
+                <input type="radio" name="payment_frequency" id="payment_frequency" value="semi-annual"> Semi-Annual
+                <input type="radio" name="payment_frequency" id="payment_frequency" value="annual"> Annual
+              </label>
+              <br>
+              <label>
+                Loan Purpose<span class="required" >*</span>:
+                <input type="radio" name="loan_purpose" id="loan_purpose" value="purchaseRealEstate" > Purchase Real Estate
+                <input type="radio" name="loan_purpose" id="loan_purpose" value="refinanceRealEstate" > Refinance Real Estate
+                <input type="radio" name="loan_purpose" id="loan_purpose" value="cashOut" > Cash Out
+                <input type="radio" name="loan_purpose" id="loan_purpose" value="other" > Other
+                <br>
+                If Other, Specify<span class="required">*</span>: <br>
+                <input type="text" name="loan_purpose_other" id="loan_purpose_other" placeholder="Specify other purpose"><br>
+              </label>
+              <br>
+              <label class="table-label">
+                Use of Funds:
+                <table id="useOfFundsTable">
+                  <thead>
+                    <tr>
+                      <th colspan="2">Source of Cash</th>
+                      <th colspan="2">Use of Cash</th>
+                    </tr>
+                    <tr>
+                      <th>Amount</th>
+                      <th>Description</th>
+                      <th>Amount</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!-- Source of Cash -->
+                      <tr>
+                        <!-- Source of Funds -->
+                        <td><input type="text" name="source_of_funds_amount_1" id="source_of_funds_amount_1"  ></td>
+                        <td><input type="text" name="source_of_funds_desc_1" id="source_of_funds_desc_1"  ></td>
+        
+                        <!-- Use of Funds -->
+                        <td><input type="text" name="use_of_funds_amount_1" id="use_of_funds_amount_1"  ></td>
+                        <td><input type="text" name="use_of_funds_desc_1" id="use_of_funds_desc_1"  ></td>
+                    </tr>
+                    <!-- Add similar rows for source_of_funds_2, source_of_funds_3, use_of_funds_2, use_of_funds_3 -->
+                    <tr>
+                        <td><input type="text" name="source_of_funds_amount_2" id="source_of_funds_amount_2"></td>
+                        <td><input type="text" name="source_of_funds_desc_2" id="source_of_funds_desc_2" ></td>
+        
+                        <td><input type="text" name="use_of_funds_amount_2" id="use_of_funds_amount_2"  ></td>
+                        <td><input type="text" name="use_of_funds_desc_2" id="use_of_funds_desc_2"  ></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="source_of_funds_amount_3" id="source_of_funds_amount_3" ></td>
+                        <td><input type="text" name="source_of_funds_desc_3" id="source_of_funds_desc_3"  ></td>
+        
+                        <td><input type="text" name="use_of_funds_amount_3" id="use_of_funds_amount_3" ></td>
+                        <td><input type="text" name="use_of_funds_desc_3" id="use_of_funds_desc_3" ></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="source_of_funds_amount_4" id="source_of_funds_amount_4"  ></td>
+                        <td><input type="text" name="source_of_funds_desc_4" id="source_of_funds_desc_4"  ></td>
+        
+                        <td><input type="text" name="use_of_funds_amount_4" id="use_of_funds_amount_4" ></td>
+                        <td><input type="text" name="use_of_funds_desc_4" id="use_of_funds_desc_4" ></td>
+                    </tr>
+                    <!-- Add similar rows for source_of_cash_2, source_of_cash_3, use_of_cash_2, use_of_cash_3 -->
+                  </tbody>
+                </table>
+              </label>
+              <br>
+              <label>
+                Loan Product<span class="required">*</span>: <br>
+                <input type="text" name="loanProduct" id="loanProduct" placeholder="e.g. 20 yr fixed"  readonly>
+              </label>
+              <br>
+              <label>
+                Requested Years Amortized<span class="required">*</span>:
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="5" disabled> 5
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="10" disabled> 10
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="15"disabled> 15
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="20"disabled> 20
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="25"disabled> 25
+                <input type="radio" name="yearsAmortized" id="yearsAmortized" value="30"disabled> 30
+              </label>
+              <br>
+              <div class="button-container">
+                <button type="button" class="buttonstyle" onclick="closeForm()">Close</button>
+                <button type="submit" class="buttonstyle" id="submitButton">Submit</button>
+              </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/editLoan.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(114, 212, 245, 0.571);
+}
+h1, h2, h3 {
+    margin: 0;
+}
+section {
+    margin-bottom: 20px;
+    padding: 10vh;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    max-width: fit-content;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+input[type="number"] {
+    width: calc(100% - 12px);
+    padding: 5px;
+    margin-top: 5px;
+}
+input[type="radio"] {
+    margin-right: 5px;
+}
+.button-container {
+    text-align: center;
+    margin-bottom: 50 px;
+}
+.buttonstyle {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+
+}

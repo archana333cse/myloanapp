@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Collateral</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/addNewCollateral.css">
+</head>
+
+<body>
+    <div class="background-image"></div>
+   
+    <div class="container1">
+        <div class="tabs text-center">
+            
+            <span class="des">Please complete the form accurately. For individual applicants, provide personal details, contact, and
+              financial information. For business entities, furnish business specifics, tax details, and contact
+              information.
+              Ensure all required fields are filled.</span>
+        </div>
+        
+
+        <div class="large-box">
+            <div class="tab-content-container">
+                <div class="popup-overlay" id="popupOverlayCollateral">
+                    <div class="popup" id="collateralPopup">
+                      <div class="popup-content">
+                        <h2>Add New Collateral</h2>
+                        
+                        
+                        <form id="updateCollateralForm" action="/updateCollateral" method="POST">
+
+                          <div class="input-container">
+                          <label>
+                            State of Property Location<span class="required">*</span>: <br>
+                            <input type="text" name="propertyState" class="input-half" placeholder="State" required readonly>
+                          </label>
+                          <span class="max">(maximum 35 characters)</span>
+                        </div>
+                        <div class="input-container">
+
+                          <label class="label-align-right">
+                            County of Property Location<span class="required">*</span>: <br>
+                            <input type="text" name="propertyCounty" class="input-half" placeholder="County" required readonly>
+                          </label>
+                          <span class="max">(maximum 35 characters)</span>
+                        </div>
+                          <br>
+                          <div class="location-details-container">
+                            
+                            <div class="location-details">
+                              <div class="input-container">
+                              <label>
+                                Section<span class="required">*</span>: <br>
+                                <input type="text" name="section" class="input-third" placeholder="Section" required>
+                              </label>
+                              <span class="max">(maximum 35 characters)</span>
+                            </div>
+                            <div class="input-container">
+                              <label>
+                                Township<span class="required">*</span>: <br>
+                                <input type="text" name="township" class="input-third" placeholder="Township" required>
+                              </label>
+                              <span class="max">(maximum 35 characters)</span>
+
+                            </div>
+                            <div class="input-container">
+
+                              <label>
+                                Range<span class="required">*</span>: <br>
+                                <input type="text" name="range" class="input-third" placeholder="Range" required>
+                              </label><span class="max">(maximum 35 characters)</span><br>
+
+                              </div>
+                              
+                              <label>OR</label>
+                              
+                            </div><br>
+                            <div class="input-container">
+                            <label class="location-details-label">Abbreviated Legal Description<span class="required">*</span>:</label> <br>
+                              <input type="text" name="abriviatedlegaldescription" placeholder="Abbreviated Legal Description" required>
+                              <span class="max">(maximum 35 characters)</span> 
+                            </div>
+                          </div>
+                  
+                          <table id="appraisedValueTable">
+                            <thead>
+                              <tr>
+                                <th>Estimated Appraised Value Of:</th>
+                                <th>Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Land</td>
+                                <td><input type="number" name="landValue"></td>
+                              </tr>
+                              <tr>
+                                <td>Residence</td>
+                                <td><input type="number" name="residenceValue"></td>
+                              </tr>
+                              <tr>
+                                <td>All Other Improvements</td>
+                                <td><input type="number" name="improvementsValue"></td>
+                              </tr>
+                              <tr>
+                                <td>Permanent Plantings</td>
+                                <td><input type="number" name="plantingsValue"></td>
+                              </tr>
+                              <tr id="totalValueRow">
+                                <td>Total Value:</td>
+                                <td><input type="number" id="totalValue" name="totalValue" value="0" readonly></td>
+                              </tr> 
+                            </tbody>
+                          </table>
+                          <h3>Property Agreements</h3>
+                          <label>
+                            Are there any leases or rental agreements on the property?<span class="required">*</span>
+                            <input type="radio" name="propertyLeases" value="yes" required> Yes
+                            <input type="radio" name="propertyLeases" value="no"> No
+                          </label>
+                          <br>
+                          <label>
+                            If yes, are there any leases or rental agreements for which the remaining term (including any unexercised renewal options or rights) is 3 years or more?<span class="required">*</span>
+                            <input type="radio" name="remainingTerm" value="yes" required> Yes
+                            <input type="radio" name="remainingTerm" value="no"> No
+                          </label>
+                          <br>
+                          <label>
+                            Are there any agreements for the property (including but not limited to leases and rental agreements) that include a purchase option, purchase right, right of first refusal, right of first offer or any similar right or offer?<span class="required">*</span>
+                            <input type="radio" name="purchaseAgreements" value="yes" required> Yes
+                            <input type="radio" name="purchaseAgreements" value="no"> No
+                          </label>
+                          <br>
+                  
+                          <!-- Leases and Encumbrances -->
+                          <h3>Leases and Encumbrances</h3>
+                          <label><input type="checkbox" name="manureEasements"> Manure Easements</label><br>
+                          <label><input type="checkbox" name="windLeases"> Wind Leases, Easements or Agreements</label><br>
+                          <label><input type="checkbox" name="cellTower"> Cell Tower</label><br>
+                          <label><input type="checkbox" name="oilMineralGasLeases"> Oil/Mineral or Gas Leases(s)</label><br>
+                          <label><input type="checkbox" name="otherLeases"> Other (describe): <br>
+                          <input type="text" name="otherLeasesDescription"></label><br>
+                  
+                          <!-- Ownership Information -->
+                          <label>
+                            Who owns (or will own) the collateral?<span class="required">*</span> <br>
+                            <input type="text" name="ownership" class="input-half" required>
+                          </label>
+                          <br>
+                  
+                          <!-- Estimated Cash Rent and Real Estate Taxes -->
+                          <label>
+                            Estimated Cash Rent/Acre<span class="required">*</span>: <br> $ <input type="number" name="cashRent" class="input-half" required><br>
+                            Estimated Real Estate Taxes/Acre<span class="required">*</span>: <br> $ <input type="number" name="realEstateTaxes" class="input-half" required>
+                          </label>
+                  
+                          <!-- Table for Acres -->
+                          <h3>Tillable Acres</h3>
+                          <table id="acresTable">
+                            <thead>
+                              <tr>
+                                <th>Tillable Acres</th>
+                                <th>No. of Irrigated Acres</th>
+                                <th>Irrigated Value per Acre</th>
+                                <th>No. of Non-Irrigated Acres</th>
+                                <th>Non-Irrigated Value per Acre</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Pasture Acres:</td>
+                                <td><input type="number" name="pastureIrrigatedAcres"></td>
+                                <td><input type="number" name="pastureIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="pastureNonIrrigatedAcres"></td>
+                                <td><input type="number" name="pastureNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <tr>
+                                <td>CRP Acres:</td>
+                                <td><input type="number" name="crpIrrigatedAcres"></td>
+                                <td><input type="number" name="crpIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="crpNonIrrigatedAcres"></td>
+                                <td><input type="number" name="crpNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <tr>
+                                <td>Wooded Acres:</td>
+                                <td><input type="number" name="woodedIrrigatedAcres"></td>
+                                <td><input type="number" name="woodedIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="woodedNonIrrigatedAcres"></td>
+                                <td><input type="number" name="woodedNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <tr>
+                                <td>Permanent Plantings Acres:</td>
+                                <td><input type="number" name="plantingsIrrigatedAcres"></td>
+                                <td><input type="number" name="plantingsIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="plantingsNonIrrigatedAcres"></td>
+                                <td><input type="number" name="plantingsNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <tr>
+                                <td>Timberland Acres:</td>
+                                <td><input type="number" name="timberlandIrrigatedAcres"></td>
+                                <td><input type="number" name="timberlandIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="timberlandNonIrrigatedAcres"></td>
+                                <td><input type="number" name="timberlandNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <tr>
+                                <td>Others:</td>
+                                <td><input type="number" name="othersIrrigatedAcres"></td>
+                                <td><input type="number" name="othersIrrigatedValuePerAcre"></td>
+                                <td><input type="number" name="othersNonIrrigatedAcres"></td>
+                                <td><input type="number" name="othersNonirrigatedValuePerAcre"></td>
+                              </tr>
+                              <!-- Add more rows as needed -->
+                              <tr id="totalRow">
+                                <td>Total Acres:</td>
+                                <td><input id="totalIrrigatedAcres"></td>
+                                <td><input id="totalIrrigatedValue"></td>
+                                <td><input id="totalNonIrrigatedAcres"></td>
+                                <td><input id="totalNonirrigatedValue"></td>
+                              </tr>            
+                            </tbody>
+                          </table>
+                          <label>
+                            Total Acres<span class="required">*</span>: <input type="number" name="totalacres" class="input-half" required>
+                          </label>
+                          <!-- Radio buttons -->
+                          <h3>Improvements</h3>
+                          <label>
+                            Are there any improvements on the collateral?<span class="required">*</span>
+                            <input type="radio" name="improvements" value="yes" required> Yes
+                            <input type="radio" name="improvements" value="no" > No
+                          </label><br>
+                          <label>
+                            Are there any permanent plantings on the collateral?<span class="required">*</span>
+                            <input type="radio" name="permanentplantings" value="yes" required> Yes
+                            <input type="radio" name="permanentplantings" value="no"> No
+                          </label><br>
+                          <label>
+                            If Yes, Do the improvements represent a significant portion of repayment income?<span class="required">*</span>
+                            <input type="radio" name="irepayment" value="yes" required> Yes
+                            <input type="radio" name="irepayment" value="no"> No
+                          </label><br>
+                          <label>
+                            If yes, do the permanent plantings represent a significant portion of repayment income?<span class="required">*</span>
+                            <input type="radio" name="pprepayment" value="yes" required> Yes
+                            <input type="radio" name="pprepayment" value="no"> No
+                          </label><br>
+                          <label>
+                            Have any improvements, repairs, or work taken place on the property within the last six months?<br>
+                            (Including any that are currently underway or that will commence shortly)? <span class="required">*</span>
+                            <input type="radio" name="sixmonthwork" value="yes" required> Yes
+                            <input type="radio" name="sixmonthwork" value="no" > No
+                          </label><br>
+                          <label>
+                            Is there a residence on the collateral? <span class="required">*</span>
+                            <input type="radio" name="residence" value="yes" required> Yes
+                            <input type="radio" name="residence" value="no"> No
+                          </label><br>
+                  
+                          <!-- Text box -->
+                          <div class="textarea-container">
+                          <label>
+                            If there are any improvements and/or permanent plantings, provide a brief description.<br>
+                            <textarea name="description" class="description-textarea" style="width: 70%;"></textarea>
+                            
+                          </label><span class="max">(maximum 255 characters)</span>
+                          </div>
+
+                  
+                          <!-- Water and Environmental Information -->
+                          <label>
+                            Water, Irrigation or Well Rights/Restrictions<span class="required">*</span>:
+                            <input type="radio" name="waterRights" value="yes" required> Yes
+                            <input type="radio" name="waterRights" value="no"> No
+                          </label><br>
+                          <div class="textarea-container">
+                          <label>
+                            If yes, please describe:                                                                   <br>
+                            
+                            <textarea name="waterRightsDescription" class="description-textarea" style="width: 70%;" ></textarea>
+                            
+                          </label>
+                          <span class="max">(maximum 255 characters)</span>
+
+                          </div>
+                          
+                          <label>
+                            Environmental Hazard, Known or Suspected<span class="required">*</span>:
+                            <input type="radio" name="environmentalHazard" value="yes" required> Yes
+                            <input type="radio" name="environmentalHazard" value="no"> No
+                          </label>
+                          <div class="textarea-container">
+                          <label>
+                            If yes, please describe:<br>
+                            <textarea name="environmentalHazardDescription" style="width: 70%;"></textarea>
+
+                          </label>
+                          <span class="max">(maximum 255 characters)</span></div>
+                          <div class="button-container">
+                            <button type="button" class="buttonstyle" onclick="closeForm()">Close</button>
+                            <button type="submit" class="buttonstyle" id="submitButton">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/editCollateral.js"></script>
+</body>
+
+</html>

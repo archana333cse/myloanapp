@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Borrower</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/addNewBorrower.css">
+
+
+
+</head>
+
+<body>
+  <div class="background-image"></div>
+
+  <!-- Navbar content -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/logo.png" alt="" style="height: 40px; width: 200px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="empDashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Analytics</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Utilities
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Send link to borrower</a></li>
+              <li><a class="dropdown-item" href="#">Download Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Upload Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Download Consolidated Income Statement</a></li>
+              <li><a class="dropdown-item" href="#">Audit Log</a></li>
+
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ">Profile</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--===============================================================================================-->
+
+  <div class="container1">
+    <div class="tabs text-center">
+      
+      <span class="des">Please complete the form accurately. For individual applicants, provide personal details, contact, and
+        financial information. For business entities, furnish business specifics, tax details, and contact information.
+        Ensure all required fields are filled.</span>
+    </div>
+ 
+    <div class="large-box">
+      <div id="addNewBorrowerTabContainer" class="tab-content-container">
+        <div class="popup-overlay" id="borrowerPopupOverlay">
+          <div class="popup" id="borrowerPopup">
+            <div class="table-container" style="max-height: 480px; overflow-y: auto;">
+            <div class="popup-content">
+      <h2>Add New Borrower</h2>
+
+              <form id="applyingForm">
+                <label>
+                  Applying As:
+                  <input type="radio" id="individualRadio" name="applyingAs" value="individual" required checked readonly>
+                  Individual
+                  <input type="radio" id="businessEntityRadio" name="applyingAs" value="businessEntity" readonly> Business Entity
+                </label><br>
+              </form>
+
+
+
+              <form id="individualForm" style="display: none;" action="/submit_individual_borrower" method="POST"> 
+
+                <input type="hidden" name="applicantType" value="individual">
+                <label>
+                  Applicant Is<span class="required">*</span>:
+                  <input type="radio" name="applicantIs" value="primaryApplicant" required readonly> Primary Applicant
+                  <input type="radio" name="applicantIs" value="coApplicant" readonly> Co-Applicant
+                  <input type="radio" name="applicantIs" value="guarantor" readonly> Guarantor
+                </label>
+                <br>
+                <div id="relationshipField" style="display: none;">
+                  <label>
+                    Relationship With Primary Applicant: <br>
+                    <input type="text" name="relationshipWithPrimary" >
+                  </label>
+                </div><br>
+                <!-- Display Loan ID input field only for Co-Applicant and Guarantor -->
+                <div id="loanIDField" style="display: none;">
+                  <label>
+                    Loan ID (Of Primary Applicant): <br>
+                    <input type="number" name="loanID" readonly>
+                  </label>
+                </div>
+
+                <label>
+                  Name of Applicant<span class="required">*</span>: <br>
+
+                  <input type="text" name="firstName" placeholder="First Name*" required readonly>
+                  <input type="text" name="middleName" placeholder="Middle Name" readonly>
+                  <input type="text" name="lastName" placeholder="Last Name*" required readonly>
+                </label><br>
+                <label>
+                  Email<span class="required">*</span>:
+                  <div class="email-container">
+                    <input type="email" name="email" placeholder="YourEmail" required readonly>
+                  </div>
+                </label><br>
+
+                <label>
+                  Mobile<span class="required">*</span>: <br>
+                  <div class="telephone-container">
+                    <input type="tel" name="telephone" required readonly>
+                  </div>
+                </label><br>
+
+                <label>
+                  Address of Applicant<span class="required">*</span>: <br>
+                  <input type="text" name="streetAddress" placeholder="Street Address*" required>
+                  <input type="text" name="city" placeholder="City*" required>
+                  <input type="text" name="state" placeholder="State*" required>
+                  <input type="text" name="zipCode" placeholder="Zip Code*" required>
+                  <input type="text" name="county" placeholder="County*" required>
+                </label><br>
+                <label>
+                  Are you a US citizen or permanent alien?<span class="required">*</span>
+                  <input type="radio" name="citizenship" value="yes" required> Yes
+                  <input type="radio" name="citizenship" value="no"> No
+                </label><br>
+                <label>
+                  Date of Birth<span class="required">*</span>: <br>
+                  <input type="date" name="dateOfBirth" required readonly>
+                </label><br>
+                <strong>Other Information</strong><br>
+                <label>
+                  Social Security Number<span class="required">*</span>: <br>
+                  <input type="password" name="socialSecurity" required readonly>
+                </label><br>
+                <label>
+                  Marital Status<span class="required">*</span>:
+                  <input type="radio" name="maritalStatus" value="married" required> Married (include separated)
+                  <input type="radio" name="maritalStatus" value="single"> Single (include divorced, widowed, and
+                  unmarried)
+                </label><br>
+                <label>
+                  Year Beginning Farming<span class="required">*</span>: <br>
+                  <input type="number" name="yearBeginningFarming" min="1900" max="2023" required>
+                </label><br>
+                <label>
+                  Year at Current Address<span class="required">*</span>: <br>
+                  <input type="number" name="yearAtCurrentAddress" min="0" max="100" required>
+                </label><br>
+                <!-- Additional Information Section for Individual -->
+                <div id="additionalInfoIndividual" style="display: none;">
+                  <h3>Additional Information</h3>
+                  <label class="additional-comments">Additional Comments:</label>
+                  <div class="textarea-container">
+                  <textarea name="additionalComments" rows="4" cols="4"
+                    placeholder="Enter additional comments here" class="description-textarea"></textarea>
+                    <span class="max">(maximum 255 characters)</span>
+                  </div>
+                  
+
+                  <label>Gross Farm Income:</label> <br>
+                  <input type="number" id="grossFarmIncome" name="grossFarmIncome" placeholder="Enter gross farm income"
+                  readonly>
+
+                  <label>Net Farm Income:</label> <br>
+                  <input type="number" id="netFarmIncome" name="netFarmIncome" placeholder="Enter net farm income"
+                  readonly>
+
+                  <label>Net Non-Farm Income:</label> <br>
+                  <input type="number" id="netNonFarmIncome" name="netNonFarmIncome"
+                    placeholder="Enter net non-farm income" readonly><br>
+
+                  <label>Source of Non-Farm Income:</label>
+                  <table class="income-table">
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Income</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" name="source1"></td>
+                        <td><input type="number" name="income1"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source2"></td>
+                        <td><input type="number" name="income2"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source3"></td>
+                        <td><input type="number" name="income3"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source4"></td>
+                        <td><input type="number" name="income4"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <label>Total Assets:<span class="required">*</span></label>
+                  <input type="number" id="totalAssets" name="totalAssets" placeholder="Enter total assets">
+
+                  <label>Total Liabilities:</label>
+                  <input type="number" id="totalLiabilities" name="totalLiabilities"
+                    placeholder="Enter total liabilities"><br>
+                </div>
+                <div class="button-container">
+                  <button type="button" class="buttonstyle" onclick="closeForm()">Close</button>
+                  <button type="submit" class="buttonstyle">Submit</button>
+
+                </div>
+              </form>
+
+              <!-- Business Fields -->
+              <form id="businessEntityForm" style="display: none;" action="/submit_business_entity_borrower"method="POST" >
+                <input type="hidden" name="applicantType" value="businessEntity">
+                <label>
+                  Applicant Is<span class="required">*</span>:
+                  <input type="radio" name="applicantIs" value="primaryApplicant" required readonly> Primary Applicant
+                  <input type="radio" name="applicantIs" value="coApplicant" readonly> Co-Applicant
+                  <input type="radio" name="applicantIs" value="guarantor" readonly> Guarantor
+                </label>
+                <br>
+                <div id="relationshipFieldBusiness" style="display: none;">
+                  <label>
+                    Relationship With Primary Applicant: <br>
+                    <input type="text" name="relationshipWithPrimary" >
+                  </label>
+                </div><br>
+                <!-- Display Loan ID input field only for Co-Applicant and Guarantor -->
+                <div id="loanIDFieldBusiness" style="display: none;">
+                  <label>
+                    Loan ID (Of Primary Applicant): <br>
+                    <input type="number" name="loanID" readonly>
+                  </label>
+                </div>
+                <label>
+                  Business name<span class="required">*</span>: <br>
+
+                  <input type="text" name="businessName" placeholder="enter your business name" required readonly>
+
+                </label><br>
+                <label>
+                  Business Email<span class="required">*</span>: <br>
+                  <div class="email-container">
+                    <input type="email" name="email" placeholder="Business Email" required readonly>
+
+                  </div>
+                </label><br>
+
+                <label>
+                  Federal Tax ID#<span class="required">*</span>: <br>
+                  <input type="text" name="taxId" required placeholder="enter federal tax ID" readonly>
+                </label><br>
+                <label>
+                  Mobile#<span class="required">*</span>: <br>
+                  <div class="telephone-container">
+                    <input type="tel" name="businessTelephone" required readonly >
+                  </div>
+                </label><br>
+
+                <label>
+                  Address of Business<span class="required">*</span>: <br>
+                  <input type="text" name="streetAddress" placeholder="Street Address" required > <br>
+
+
+                  <input type="text" name="city" placeholder="City" required>
+                  <input type="text" name="state" placeholder="State" required>
+                  <br>
+                  <input type="text" name="zipCode" placeholder="Zip Code" required>
+                  <input type="text" name="county" placeholder="County" required>
+                  <!-- Street Address, City, State, Zip Code, County fields -->
+                </label><br>
+                <label>
+                  Contact name & Details<span class="required">*</span>: <br>
+                  <input type="text" name="contactNameDetails" required>
+                </label><br>
+                <label>
+                  Description of Business & Services<span class="required">*</span>:</label> <br>
+                  <div class="textarea-container">
+                    <textarea name="businessDescription" required class="description-textarea"></textarea>
+                    <span class="max">(maximum 255 characters)</span>
+                  </div>
+                  <label>
+                    Business Type:<span class="required">*</span><br>
+                    <input type="radio" name="businessType" value="corporation" required> Corporation<br>
+                    <input type="radio" name="businessType" value="limitedPartnership" required> Limited Partnership<br>
+                    <input type="radio" name="businessType" value="limitedLiability" required> Limited Liability Corporation<br>
+                    <input type="radio" name="businessType" value="generalPartnership" required> General Partnership<br>
+                    <input type="radio" name="businessType" value="estate" required> Estate<br>
+                  </label><br>
+                  
+
+                <div class="principle-container">
+                  <label>
+                    Principal/Officer<span class="required">*</span>: <br>
+                    <input type="text" name="principalOfficer" required>
+                  </label><br>
+                  <br>
+                  <label>
+                    Home Address<span class="required">*</span>: <br>
+                  </label>
+                  <div class="textarea-container">
+                    <textarea id="homeAddress" name="homeAddress" class="description-textarea" required></textarea>
+                  <span class="max">(maximum 255 characters)</span>
+                  </div>
+                  
+                    Owned %: <br>
+                    <input type="range" name="ownedPercentage" id="ownedPercentageSlider" min="0" max="100"
+                      oninput="updateOwnedPercentage(this.value)">
+                    <span id="ownedPercentageValue">50</span> %
+                  </label>
+                  <label>
+                    Title: <br>
+                    <input type="text" id="ownershipTitle" name="ownershipTitle">
+                  </label>
+                </div>
+
+                <!-- Additional Information Section for Business Entity -->
+                <div id="additionalInfoBusiness" style="display: none;">
+                  <h3>Additional Information</h3>
+                  <label>Additional Comments:</label>
+                  <div class="textarea-container">
+                  <textarea name="additionalComments" rows="4"
+                    placeholder="Enter additional comments here" class="description-textarea"></textarea>
+                    <span class="max">(maximum 255 characters)</span>
+                  </div>
+
+                  <label>Gross Farm Income:</label>
+                  <input type="number" id="grossFarmIncome" name="grossFarmIncome"
+                    placeholder="Enter gross farm income" readonly>
+
+                  <label>Net Farm Income:</label>
+                  <input type="number" id="netFarmIncome" name="netFarmIncome" placeholder="Enter net farm income" readonly>
+
+                  <label>Net Non-Farm Income:</label>
+                  <input type="number" id="netNonFarmIncome" name="netNonFarmIncome"
+                    placeholder="Enter net non-farm income" readonly><br>
+
+                  <label>Source of Non-Farm Income:</label>
+                  <table class="income-table">
+                    <thead>
+                      <tr>
+                        <th>Source Description</th>
+                        <th>Income</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" name="source1"></td>
+                        <td><input type="number" name="income1"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source2"></td>
+                        <td><input type="number" name="income2"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source3"></td>
+                        <td><input type="number" name="income3"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source4"></td>
+                        <td><input type="number" name="income4"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source5"></td>
+                        <td><input type="number" name="income5"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <label>Total Assets:<span class="required">*</span></label>
+                  <input type="number" id="totalAssets" name="totalAssets" placeholder="Enter total assets" >
+
+                  <label>Total Liabilities:</label>
+                  <input type="number" id="totalLiabilities" name="totalLiabilities"
+                    placeholder="Enter total liabilities"><br>
+                </div>
+                <div class="button-container">
+                  <button type="button" class="buttonstyle" onclick="closeForm()">Close</button>
+                  <button type="submit" class="buttonstyle">Submit</button>
+                </div>
+                
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/addNewBorrower.js"></script>
+  <script src="/static/js/scripts.js"></script>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

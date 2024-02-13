@@ -1,0 +1,368 @@
+
+<!--#include virtual="loader.html" -->
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/adminDashboard.css">
+    <script src="/static/js/loader.js"></script>
+</head>
+
+<body>
+     <!-- Loader Container -->
+  <div id="loader-container" class="d-none" >
+    <div class="d-flex align-items-center">
+        <strong role="status">Loading...</strong>
+        <div class="spinner-border ms-auto" aria-hidden="true"></div>
+    </div>
+</div>
+    
+
+    
+    <!-- ======== Main wrapper for dashboard =========== -->
+    <div class="wrapper">
+        <!-- =========== Sidebar for admin dashboard =========== -->
+        <aside id="sidebar" class="js-sidebar">
+            <!-- ======== Content For Sidebar ========-->
+            <div class="h-100">
+                <!-- ======= Navigation links for sidebar ======== -->
+
+                <div class="sidebar-logo">
+                    <a href="#"><img src="/static/images/logo.png" alt="logo_img"></a>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        <b>GoFin Dashboard </b>
+                    </li>
+                    <li class="sidebar-item" id="dashboardElement">
+                        <a href="adminDashboard.html" class="sidebar-link">
+                            <i class="fa-solid fa-list"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-item" id="existingElement">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#existingCompany" id="showExistingCompanyButton" title="Click here to see existing company">
+                            <i class="fa-solid fa-table"></i>
+                            Existing Company 
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item" id="resetPasswordElement">
+
+                        <a href="#" class="sidebar-link collapsed" id="resetPasswordButton" data-bs-target="#resetPass"
+                            title="click here to reset your password">
+                            <i class="fa-solid fa-key"></i>
+                            Reset Password</a>
+
+                    </li>
+                    <li class="sidebar-item" id="addEmployeeElement">
+
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#addNew"
+                            title="click here to add new company">
+                            <i class="fa-solid fa-square-plus"></i>
+                            Add New Company </a>
+
+                    </li>
+                    
+                    
+
+
+                    <li class="sidebar-item" id="logoutElement">
+
+                        <a href="landingpage.html" class="sidebar-link collapsed" data-bs-target="#logout"
+                            title="Click here to logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            logout </a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+        <!-- ========= Main section of dashboard ======= -->
+          
+        <div class="main">
+            <!-- ========= Main navbar section of dashboard ======= -->
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img src="/static/images/profile.jpg" class="avatar img-fluid rounded" alt="">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" id="profileElement">
+                                <a href="#" class="dropdown-item">Profile</a>
+                                <a href="landingpage.html" class="dropdown-item">Logout</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- ========= Main content section of dashboard ======= -->
+           
+           
+            <main class="content px-3 py-2" id="container">
+
+
+                <div class="container-fluid">
+
+
+                    <div class="mb-3" id="hideElement1">
+                        <h4>Admin Dashboard</h4>
+                    </div>
+
+                    <div class="row" id="hideElement2">
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card flex-fill border-0 illustration">
+                                <div class="card-body p-0 d-flex flex-fill">
+                                    <div class="row g-0 w-100">
+                                        <div class="col-6">
+                                            <div class="p-3 m-1">
+                                                <h4>Welcome, user_name! </h4>
+                                                <p class="mb-0">
+                                                    We're delighted to have you on board.
+                                                    Your financial journey begins here. Explore your personalized
+                                                    dashboard.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6 align-items-end text-end">
+                                            <img src="/static/images/wel.png" alt="welcome-user"
+                                                class="img-fluid illustration illustration-img">
+                                        </div>
+
+
+
+                                        <div class="col-6 align-self-end text-end">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card flex-fill border-0">
+                                <div class="card-body py-4">
+
+                                    <div class="d-flex align-items-start">
+                                        <div class="flex-grow-1">
+                                            <h4 class="mb-2">
+                                                Welcome To Fast & Easy Funding
+                                            </h4>
+
+                                            <p class="mb2">
+                                                Experience rapid and hassle-free funding with our loan website. Swift
+                                                approvals, seamless applications, and user-friendly navigation make
+                                                securing funds a breeze.
+                                            </p>
+                                            <div class="mb-0">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Element -->
+                    <div id="showExistingCompany" style="display: none;">
+                    <div class="card border-0" id="hideElement3">
+                        <div class="card-header">
+                            <h5 class="card-title"> Existing Company</h5>
+                            <h6 class="card-subtitle text-muted">
+                                Discover our list of active companies. Find opportunities, connect, and be part of our successful community.
+
+                            </h6>
+
+                        </div>
+                        <div class="card-body table-container">
+                            <table class="table table-striped table-hover">
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Company ID</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Company Name</th>
+                                        <th scope="col">Company Email</th>
+                                        <th scope="col">Contact</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="existing-comp-tablebody">
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+               <!-- Profile Section -->
+<div id="profileSection" style="display: none;">
+   
+    <h4>User Profile</h4>
+    
+    <hr>
+    <div class="profileContainer">
+        <div class="profileDetails">
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>User ID:</strong> <span id="profileID"></span></p>
+            <p><strong>Contact:</strong> <span id="profileContact"></span></p>
+        </div>
+        <div class="profilePictureContainer">
+            <img id="profilePicture" src="/static/images/profile1.png" alt="Profile Picture">
+        </div>
+    </div>
+</div>
+
+                    <div id="addNewCompanyForm" style="display: none;">
+                        
+                        <div class="content clearfix">
+
+                            <div class="form-company-registration">
+
+                                <div class="registration-icon">
+                                    <!-- Insert your loan or finance-related image here -->
+                                    <img src="/static/images/reg.png" id="icon">
+                                </div>
+                                <h2>Company Registration</h2>
+                                <form id="companyRegistrationForm" action="/register_company" method="POST">
+                                    <label for="role">Role:</label>
+                                    <select id="role" name="role" required title="Select role">
+                                        <option value="Borrower">Borrower</option>
+                                        <option value="Company">Company</option>
+                                        <option value="Investor">Investor</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+
+                                    <label for="userName">User Name:</label>
+                                    <input type="text" id="userName" name="userName" required title="Enter a unique UserName">
+
+                                    <label for="companyName">Name:</label>
+                                    <input type="text" id="companyName" name="companyName" required title="Enter new company name here">
+
+                                    <label for="companyEmail">Email:</label>
+                                    <input type="email" id="companyEmail" name="companyEmail" required title="Enter company email here">
+
+                                    <label for="contact">Contact:</label>
+                                    <input type="text" id="contact" name="contact" required title="Enter contact here">
+
+                                    <button type="submit" class="buttonstyle" title="Click here to register new company">Register</button>
+
+                                </form>
+                            </div>
+
+                        </div>
+                        <div id="success-message" style="display: none;">
+                            <!-- Success message will be displayed here -->
+                        </div>
+                        <div id="error-message1">
+                            <!-- Error message will be displayed here -->
+                        </div>
+                    </div>
+
+                     
+
+
+
+                    <div id="resetPasswordForm" style="display: none;">
+                        
+                        <div class="content clearfix">
+                            <div class="form-company-registration">
+                                <div class="registration-icon">
+                                    <!-- Insert your loan or finance-related image here -->
+                                    <img src="/static/images/reg.png" id="icon">
+                                </div>
+
+                                <h2>Reset Password</h2>
+                                <form id="resetpasswordform" action="#" method="POST">
+                                    <!-- <input type="hidden" id="user_id" name="user_id" value="{{ user_id }}"> -->
+                                    <label for="password">New Password</label>
+                                    <input type="password" id="password" name="password" required title="Enter new password here">
+                                    <label for="CPassword">Confirm Password</label>
+                                    <input type="password" id="cPassword" name="cPassword" required title="Confirm entered password">
+
+                                    <button type="submit" title="Click to reset your password">Reset</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+
+
+                </div>
+
+
+            </main> 
+
+            
+            
+
+            <!-- ========= light and dark mode toggle button ======= -->
+            <a href="#" class="theme-toggle">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-sun"></i>
+            </a>
+          
+            <!-- ========= footer section of dashboard ======= -->
+           
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a href="#" class="text-muted">
+                                    <img src="/static/images/logo.png" alt="Logo_img">
+                                </a>
+
+
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Contact</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">About Us</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted">Terms & Conditions</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+           
+        </div>
+      
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/adminDashboard.js"></script>
+  
+    
+</body>
+
+</html>

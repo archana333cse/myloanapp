@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast, Easy Funding - Application</title>
+
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  
+
+
+
+  <script src="/static/js/loader.js"></script>
+
+
+</head>
+
+<body>
+  <script>
+    $(document).ready(function() {
+      // Get all dashboard items
+      var dashboardItems = $('.nav-link');
+  
+      // Add click event listener to each dashboard item
+      dashboardItems.on('click', function() {
+        // Remove "active" class from all items
+        dashboardItems.removeClass('active');
+  
+        // Add "active" class to the clicked item
+        $(this).addClass('active');
+      });
+    });
+  </script>
+  
+  <!-- Loader Container -->
+  <div id="loader-container" class="d-none">
+    <div class="d-flex align-items-center">
+      <strong role="status">Loading...</strong>
+      <div class="spinner-border ms-auto" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div class="background-image"></div>
+  <div class="wrapper">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 250px; height: 650px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <a class="navbar-brand" href="#">
+          <img src="/static/images/logo.png" alt="" style="height: 40px; width: 150px;">
+        </a>
+
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="application.html"> <i class="fa-solid fa-list"></i> Application Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-white" aria-current="page" href="empDashboard.html"> <i class="fa-solid fa-arrow-left"></i> Go to User Dashboard</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link text-white" href="#"><i class="fa-solid fa-chart-line"></i>Analytics</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>  Utilities
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Send link to borrower</a></li>
+            <li><a class="dropdown-item" onclick="downloadTemplate()" href="#">Download Tax Schedule Template</a></li>
+            <li><a class="dropdown-item" href="Prog2.html">Upload Tax Schedule Template</a></li>
+            <li><a class="dropdown-item" href="index.html">Download Consolidated Income Statement</a></li>
+            <li><a class="dropdown-item" href="#">Audit Log</a></li>
+
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        
+
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="/static/images/profile1.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>user_name</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+
+
+          
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="empDashboard.html">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+
+
+
+    <!--==================================================================================================-->
+
+
+
+
+
+    <div class="container1">
+      <div class="tabs">
+        <div class="tab-header" data-tab-id="tab1" onclick="showTab('tab1')"> Borrower</div>
+        <div class="tab-header" data-tab-id="tab2" onclick="showTab('tab2')"> Loan</div>
+        <div class="tab-header" data-tab-id="tab3" onclick="showTab('tab3')"> Collateral</div>
+        <div class="tab-header" data-tab-id="tab4" onclick="showTab('tab4')"> Other Info</div>
+        <div class="tab-header" data-tab-id="tab5" onclick="showTab('tab5')"> Upload Documents</div>
+        <div class="tab-header" data-tab-id="tab6" onclick="showTab('tab6')"> Final Submit</div>
+      </div>
+
+
+
+
+      <div class="large-box">
+        <div class="tab-content-container">
+          <div id="tab1" data-tab-id="tab1" class="tab-panel">
+            <h2 class="heading2">Existing Borrower Information</h2>
+            <p>All the borrowers added previously are listed below. To add a new borrower, co-applicant, or guarantor,
+              click on the "Add New Borrower+" button.</p>
+            <div class="actions">
+              <a href="addnewBorrower.html"><button id="addButton"
+                  class="button add-button buttonstyle add-borrower-button" title="Click here to add new borrower">Add
+                  New
+                  Borrower+</button></a>
+            </div>
+            <div class="table-container" style="max-height: 350px; overflow-y: auto;">
+              <table id="borrowerTable">
+                <thead>
+                  <tr>
+                    <th>Applicant ID</th>
+                    <th>Applying AS</th>
+                    <th>Type of Applicant</th>
+                    <th>Borrower Name</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="borrowerTableBody">
+
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+
+          <div id="tab2" data-tab-id="tab2" class="tab-panel">
+            <h2>Existing Loan Information</h2>
+            <p>All the borrowings added previously are listed below. To add a new Borrowing Detail, click on the "Add
+              New
+              Loan+" button.</p>
+            <div class="actions">
+              <a href="addNewLoan.html"><button id="addLoanButton" class="add-button buttonstyle button add-loan-button"
+                  title="Click here to add new Loan">Add New Loan+</button></a>
+            </div>
+            <div class="table-container">
+              <div class="table-container" style="max-height: 350px; overflow-y: auto;">
+                <table id="loanTable">
+                  <thead>
+                    <tr>
+                      <th>Borrowing ID</th>
+                      <th>Loan Purpose</th>
+                      <th>Requested Amount</th>
+                      <th>Payment Frequency</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="loanTableBody">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- ... (Collateral tab) ... -->
+
+          <div id="tab3" data-tab-id="tab3" class="tab-panel">
+            <h2>Existing Collateral Information</h2>
+            <p>All the Collaterals added previously are listed below. To add a new Collateral, click on the "Add New
+              Collateral+" button.</p>
+            <div class="actions">
+              <a href="addnewCollateral.html"><button id="addCollateralButton"
+                  class="add-button buttonstyle button add-collateral-button"
+                  title="Click here to add new collateral">Add
+                  New Collateral+</button></a>
+            </div>
+
+            <div class="table-container" style="max-height: 350px; overflow-y: auto;">
+              <table id="collateralTable">
+                <thead>
+                  <tr>
+                    <th>Loan ID</th>
+                    <th>State</th>
+                    <th>County</th>
+                    <th>Total Acres</th>
+                    <th>Total Estimated Value</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="collateraltablebody">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!----------Other Info tab---------->
+
+          <div id="tab4" class="tab-panel">
+            <h2>Existing Other Infromation</h2>
+            <p>All previously filled information are listed below. To add a new information, click on the "Add
+              Additional
+              infor+" button.</p>
+            <div class="actions">
+              <a href="otherInfo.html"><button id="addOtherInforButton"
+                  class="add-button buttonstyle button add-collateral-button"
+                  title="Click here to add Additional Information">Add Additional Info+</button></a>
+            </div>
+            <div class="table-container" style="max-height: 350px; overflow-y: auto;">
+              <table id="otherinfoTable">
+                <thead>
+                  <tr>
+                    <th>LOAN_ID</th>
+                    <th>A_ID</th>
+                    <th>TOTAL_ACRES_OWNED</th>
+                    <th>TOTAL_ACRES_RENTED</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="otherInfotablebody">
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!----------Upload Document Page---------->
+          <div id="tab5" class="tab-panel">
+            <h2>Document Checklist</h2>
+            <form id="documentForm" action="/uploadfile" method="post" enctype="multipart/form-data">
+              <h1>Upload New Document</h1>
+
+              <!-- Dropdown Button Section -->
+              <div class="buttons">
+                <!-- File Category Dropdown Button -->
+                <div class="dropdown">
+                  <a class="nav-link dropdown-toggle dropbtn" id="documentTypeDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    File Type
+                  </a>
+                  <ul class="dropdown-menu dropdown-content">
+                    <li><a class="dropdown-item" href="#" id="Borrower">Borrower</a></li>
+                    <li><a class="dropdown-item" href="#" id="Business">Business</a></li>
+                    <li><a class="dropdown-item" href="#" id="Collateral">Collateral</a></li>
+
+                  </ul>
+                </div>
+
+                <!-- File Description Dropdown Button -->
+                <div class="dropdown">
+                  <a class="nav-link dropdown-toggle dropbtn" id="fileDescDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    File Description
+                  </a>
+                  <ul class="dropdown-menu dropdown-content" id="fileDescOptions">
+                    <!-- Options will be dynamically added here -->
+
+                  </ul>
+                </div>
+
+                <!-- Hidden file input -->
+                <input type="file" name="file" style="display: none;" id="file-input">
+                <!-- Fourth button to to select the file-->
+                <input type="button" value="choose file" id="second-button" title="Choose File">
+
+                <!-- Second button to display the selected file name -->
+                <input type="button" value="File Name" id="forth-button">
+                <!-- Third button to display current date and time -->
+                <input type="date" value="File date" id="third-button">
+
+                <!-- Fourth button to to select the file-->
+
+                <!-- Hidden input fields for document type, doc_name, and doc_date -->
+                <input type="hidden" name="documentType" id="documentType" value="">
+                <input type="hidden" name="file_Desc" id="file_Desc" value="">
+                <input type="hidden" name="doc_name" id="doc_name" value="">
+                <input type="hidden" name="doc_date" id="doc_date" value="">
+                <input type="hidden" name="file_name" id="file_name" value="" class="file-name-button">
+                <input type="submit" id="uploadButton" value="&#xf093;" class="fas" title="Upload File">
+              </div>
+              <div class="document-list" id="documentList">
+                <h1>Previously Uploaded Documents</h1>
+                <table id="ExistingDocs">
+                  <thead>
+                    <tr>
+                      <th>FILE CATEGORY</th>
+                      <th>DOC NAME</th>
+                      <th>FILE DESCRIPTION</th>
+                      <th>FILE DATE AS OF</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="doctablebody">
+
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+
+          <div id="tab6" class="tab-panel">
+            <h2>Final Submit</h2>
+            <div class="final-instruction">
+
+              <p>Before final submission, carefully preview the form for accurate details. Ensure all required fields
+                are
+                filled, and uploaded documents are accurate and complete. Double-check document names and dates. After
+                confirming, submit the form. This ensures a smooth processing of your information and documents.</p>
+            </div>
+
+            <input type="button" name="preview-button" value="Preview" id="previewButton" onclick="openPreviewPage()">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/static/js/scripts.js"></script>
+
+
+
+</body>
+
+</html>

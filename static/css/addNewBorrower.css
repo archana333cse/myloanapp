@@ -1,0 +1,359 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    height: 100vh;
+}
+.tabs1 p{
+    font-size: smaller;
+    align-items: left;
+}
+  
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    z-index: -1;
+}
+
+
+
+
+/* Form Container Styles */
+#businessEntityForm,
+#applyingForm,
+#individualForm {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #afe8f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Header Styles */
+h3 {
+    color: #104c8d;
+}
+.additionalInfoIndividual h2{
+    text-align: left;
+}
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Input Styles */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"]
+ {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 30px;
+}
+textarea{
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 100px;
+
+}
+.textarea-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    
+  }
+  .description-textarea {
+    
+    width: 100%;
+    
+    
+  }
+  .max {
+    
+    width: 100%;
+    
+  }
+  span.des{
+    text-align: left;
+    font-size: smaller;
+  }
+
+/* Radio Button Styles */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Table Styles */
+.income-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.income-table th, .income-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.income-table th {
+    background-color: #f2f2f2;
+}
+
+/* Button Style */
+.buttonstyle {
+    background-color: #2e5885;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 0px;
+    width: 150px;
+    
+}
+
+label input[type="text"] {
+    width: 28%; /* Adjust the width as needed */
+    margin-right: 10px;
+  }
+/* Button Container Styles */
+.button-container {
+    text-align: right;
+}
+
+.buttonstyle:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Add styles for the address fields */
+label input[name="streetAddress"] {
+    width: 79%; /* Adjust the width as needed */
+  }
+  
+  label input[name="city"],
+  label input[name="state"] {
+    width: calc(40% - 13px); /* Adjust the width as needed, subtracting a small value for spacing */
+   
+  }
+  
+  label input[name="zipCode"],
+  label input[name="county"] {
+    width: calc(40% - 13px); /* Adjust the width as needed, subtracting a small value for spacing */
+    
+  }
+
+
+  /* Adjust styles for the telephone section */
+.telephone-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .telephone-container select {
+    
+    width: 10%; /* Adjust the width of the country code dropdown */
+    margin-right: 5px; /* Optional: Add margin for spacing between country code and telephone input */
+  }
+  
+  .telephone-container input {
+    width: 60%; /* Adjust the width of the telephone input field */
+  }
+  span.required {
+    color: red;
+    margin-left: 5px; /* Add some space between the field label and the asterisk */
+  }
+
+  
+  .email-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .email-container input,
+  .email-container span,
+  .email-container select {
+    margin: 5px;
+    height: 30px; /* Adjust the height as needed */
+    
+  }
+  
+
+
+
+
+
+
+
+
+/* Additional styles for the table, header, and cells */
+
+
+/* form table style*/
+.popup-overlay .popup-content .form-table {
+    border: none;
+}
+
+
+    
+
+
+
+
+/* APPLICATION PAGE */
+
+
+/* Apply margin and padding to the container to create the desired layout */
+/* Reset default margin and padding for the body and html elements */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply margin and padding to the container to create the desired layout */
+.container1 {
+
+    margin: 30px 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+    margin-right: 5px;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+
+}
+
+/* Adjust styles for specific input fields in the business form */
+#businessEntityForm input[name="businessName"],
+#businessEntityForm input[name="taxId"],
+#businessEntityForm input[name="contactNameDetails"],
+#businessEntityForm input[name="principalOfficer"] {
+    width: 60%;
+}
+
+.large-box {
+    padding: 5px;
+    flex: 1;
+    background-color: #acadaf;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.large-box h2 {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.container1 h2 {
+    align-items: center;
+    margin-left: 5px;
+}
+
+/* Style the tabs */
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    
+
+
+}
+.tabs1 {
+    display: flex;
+    justify-content: flex-start;
+    /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+    
+
+
+}
+.tabs h2 {
+    display: inline-block;
+  }
+
+
+
+
+
+
+.tab-content-container {
+    flex: 1;
+    overflow: auto;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* Add scroll for content if it overflows */
+}
+
+
+
+
+
+/* Document tab */
+
+
+
+
+
+
+.tab-content {
+    height: 400px;
+    /* Fixed height */
+    overflow-y: auto;
+    /* Scrollable content */
+}

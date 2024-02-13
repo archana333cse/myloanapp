@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast, Easy Funding - Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <div class="background-image"></div>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Fast, Easy Funding Logo">
+    </div>
+    <nav>
+      <div class="menu">
+        <a href="home.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#service">Service</a>
+        <a href="#help">Help</a>
+        <a href="#financials">Financials</a>
+        <a href="#profile">Profile</a>
+      </div>
+    </nav>
+  </header>
+  <div class="container1">
+    <div class="tabs">
+      <div class="tab-header" data-tab-id="tab1" onclick="showTab('tab1')">Matrices</div>
+      <div class="tab-header" data-tab-id="tab2" onclick="showTab('tab2')">Charts</div>
+      <div class="tab-header" data-tab-id="tab3" onclick="showTab('tab3')">F-Template</div>
+      <div class="tab-header" data-tab-id="tab4" onclick="showTab('tab4')">Income Statement</div>
+      <div class="tab-header" data-tab-id="tab5" onclick="showTab('tab5')">Import</div>
+      <div class="tab-header" data-tab-id="tab6" onclick="showTab('tab6')">Export</div>
+    </div>
+    
+    <div class="large-box">
+      <div class="tab-content-container">
+        <div id="tab1" class="tab-panel">
+          <h2>Tab 1 Content</h2>
+          <form>
+            <!-- Add form elements for Tab 1 -->
+            <!-- For example: -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <!-- Add other form fields as needed -->
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+
+        <div id="tab4" class="tab-panel">
+          <h2>Income Statement</h2>
+        </div>
+        <div id="tab5" class="tab-panel">
+            <h2>Import</h2>
+            <div class="tab-content-subcontainer">
+              <h3 class="import-heading">Import data from excel file</h3>
+              <hr class="header-line">
+              <div class="upload-section">
+                <label for="xlsx-upload" class="choose-file">Choose File to Upload:</label>
+                <input type="file" id="xlsx-upload" accept=".xlsx" />
+                <button class="upload-button">Upload</button>
+              </div>
+            </div>
+          </div>
+          
+          <div id="tab6" class="tab-panel">
+            <h2>Financial Statements</h2>
+            <div class="tab-content-subcontainer">
+              <div class="financial-container">
+                <div class="form-group">
+                  <label for="loan-id">Loan ID:</label>
+                  <select id="loan-id">
+                    <option value="Select LoanId">Select Loan Id</option>
+                  </select>
+                  <button class="export-btn" onclick="exportData()">Export</button>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="download-container">
+                  <h4>Download Exported Data</h4>
+                  <button class="download-btn">Download</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          
+        
+        <!-- Add other tab contents similarly -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/scripts.js"></script>
+</body>
+</html>

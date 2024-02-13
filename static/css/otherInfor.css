@@ -1,0 +1,266 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    height: 100vh;
+}
+
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    z-index: -1;
+}
+
+
+
+
+/* Form Container Styles */
+#otherInfoForm
+ {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #afe8f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Label Styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"]
+ {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 30px;
+}
+input[type="number"]{
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 30px;
+
+}
+
+
+
+/* Radio Button Styles */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+  
+
+/* Button Style */
+.buttonstyle {
+    background-color: #2e5885;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+   margin-right: 0px;
+    width: 150px;
+    
+}
+
+label input[type="text"] {
+    width: 100%; /* Adjust the width as needed */
+    margin-right: 10px;
+  }
+/* Button Container Styles */
+.button-container {
+    text-align: right;
+}
+
+.buttonstyle:hover {
+    background-color: #0056b3;
+}
+
+textarea{
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 100px;
+
+}
+
+
+.textarea-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    
+  }
+  .description-textarea {
+    
+    width: 100%;
+    
+    
+  }
+  .max {
+    
+    width: 100%;
+    
+  }
+  span.des{
+    text-align: left;
+    font-size: smaller;
+  }
+
+
+  
+  span.required {
+    color: red;
+    margin-left: 5px; /* Add some space between the field label and the asterisk */
+  }
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+/* Apply margin and padding to the container to create the desired layout */
+/* Reset default margin and padding for the body and html elements */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply margin and padding to the container to create the desired layout */
+.container1 {
+
+    margin: 30px 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+    margin-right: 5px;
+    min-height: calc(100vh - 130px);
+    max-width: 100%;
+
+}
+
+
+
+.large-box {
+    padding: 5px;
+    flex: 1;
+    background-color: #acadaf;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.large-box h2 {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.container1 h2 {
+    align-items: center;
+    margin-left: 5px;
+}
+
+/* Style the tabs */
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    /* Align tabs to the left */
+    background-color: #acadaf;
+    border-bottom: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    
+
+
+}
+
+
+
+.tabs h2 {
+    display: inline-block;
+  }
+
+
+
+
+
+
+.tab-content-container {
+    flex: 1;
+    overflow: auto;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* Add scroll for content if it overflows */
+}
+
+
+
+.tab-content {
+    height: 400px;
+    /* Fixed height */
+    overflow-y: auto;
+    /* Scrollable content */
+}

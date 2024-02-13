@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Borrower</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+
+</head>
+
+<body>
+  <div class="background-image"></div>
+
+  <!-- Navbar content -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/logo.png" alt="" style="height: 40px; width: 200px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="empDashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Analytics</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Utilities
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Send link to borrower</a></li>
+              <li><a class="dropdown-item" href="#">Download Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Upload Tax Schedule Template</a></li>
+              <li><a class="dropdown-item" href="#">Download Consolidated Income Statement</a></li>
+              <li><a class="dropdown-item" href="#">Audit Log</a></li>
+
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ">Profile</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--===============================================================================================-->
+
+
+
+
+  <div class="container1">
+    <div class="tabs text-center">
+      
+      <span class="des">Please complete the form accurately. For individual applicants, provide personal details, contact, and
+        financial information. For business entities, furnish business specifics, tax details, and contact information.
+        Ensure all required fields are filled.</span>
+    </div>
+    
+      
+       
+      
+    
+    <div class="large-box">
+      <div class="tab-content-container">
+        <div class="popup-overlay" id="borrowerPopupOverlay">
+          <div class="popup" id="borrowerPopup">
+            <div class="popup-content">
+      <h2>Add New Borrower</h2>
+
+
+
+              <form id="applyingForm">
+                <label>
+                  Applying As:
+                  <input type="radio" id="individualRadio" name="applyingAs" value="individual" required checked>
+                  Individual
+                  <input type="radio" id="businessEntityRadio" name="applyingAs" value="businessEntity"> Business Entity
+                </label><br>
+              </form>
+
+
+
+              <form id="individualForm" style="display: none;" action="/submit_individual_borrower" method="POST" novalidate> 
+
+                <input type="hidden" name="applicantType" value="individual">
+                <label>
+                  Applicant Is<span class="required">*</span>:
+                  <input type="radio" name="applicantIs" value="primaryApplicant" required> Primary Applicant
+                  <input type="radio" name="applicantIs" value="coApplicant"> Co-Applicant
+                  <input type="radio" name="applicantIs" value="guarantor"> Guarantor
+                </label>
+                <br>
+                <div id="relationshipField" style="display: none;">
+                  <label>
+                    Relationship With Primary Applicant<span class="required">*</span>: <br>
+                    <input type="text" name="relationshipWithPrimary" required>
+                  </label>
+                </div><br>
+                <!-- Display Loan ID input field only for Co-Applicant and Guarantor -->
+                <div id="loanIDField" style="display: none;">
+                  <label>
+                    Loan ID (Of Primary Applicant)<span class="required">*</span>: <br>
+                    <input type="number" name="loanID" required>
+                  </label>
+                </div>
+
+                <label>
+                  Name of Applicant<span class="required">*</span>: <br>
+                  <select name="title" required style="width: 60px;">
+                    <option value="mr">Mr.</option>
+                    <option value="mrs">Mrs.</option>
+                    <option value="miss">Miss</option>
+                    <!-- Add more options as needed -->
+                  </select>
+
+                  <input type="text" name="firstName" placeholder="First Name*" required>
+                  <input type="text" name="middleName" placeholder="Middle Name">
+                  <input type="text" name="lastName" placeholder="Last Name*" required>
+                </label><br>
+                <label>
+                  Email<span class="required">*</span>:
+                  <div class="email-container">
+                    <input type="text" name="emailUsername" placeholder="YourEmail" required>
+                    <span>@</span>
+                    <select name="emailDomain" id="emailDomain" required>
+                      <option value="example.com">example.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="yahoo.com">yahoo.com</option>
+                      <!-- Add more domains as needed -->
+                    </select>
+                  </div>
+                </label><br>
+                <label>
+                  Confirm Email<span class="required">*</span>:
+                  <div class="email-container">
+                    <input type="text" name="emailUsername" placeholder=" Confirm Your Email" required>
+                    <span>@</span>
+                    <select name="emailDomain" id="emailDomain" required>
+                      <option value="example.com">example.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="yahoo.com">yahoo.com</option>
+                      <!-- Add more domains as needed -->
+                    </select>
+                  </div>
+                </label><br>
+                <label>
+                  Mobile<span class="required">*</span>: <br>
+                  <div class="telephone-container">
+                    <select name="countryCode" id="countryCode">
+                      <option value="+1">United States (+1)</option>
+                      <option value="+1">Canada (+1)</option>
+                      <option value="+91">India (+91)</option>
+                      <!-- Add more country codes as needed -->
+                    </select>
+                    <input type="tel" name="telephone" required>
+                  </div>
+                </label><br>
+
+                <label>
+                  Address of Applicant<span class="required">*</span>: <br>
+                  <input type="text" name="streetAddress" placeholder="Street Address*" required>
+                  <input type="text" name="city" placeholder="City*" required>
+                  <input type="text" name="state" placeholder="State*" required>
+                  <input type="text" name="zipCode" placeholder="Zip Code*" required>
+                  <input type="text" name="county" placeholder="County*" required>
+                </label><br>
+                <label>
+                  Are you a US citizen or permanent alien?<span class="required">*</span>
+                  <input type="radio" name="citizenship" value="yes" required> Yes
+                  <input type="radio" name="citizenship" value="no"> No
+                </label><br>
+                <label>
+                  Date of Birth<span class="required">*</span>: <br>
+                  <input type="date" name="dateOfBirth" required>
+                </label><br>
+                <strong>Other Information</strong><br>
+                <label>
+                  Social Security Number<span class="required">*</span>: <br>
+                  <input type="password" name="socialSecurity" required>
+                </label><br>
+                <label>
+                  Marital Status<span class="required">*</span>:
+                  <input type="radio" name="maritalStatus" value="married" required> Married (include separated)
+                  <input type="radio" name="maritalStatus" value="single"> Single (include divorced, widowed, and
+                  unmarried)
+                </label><br>
+                <label>
+                  Year Beginning Farming<span class="required">*</span>: <br>
+                  <input type="number" name="yearBeginningFarming" min="1900" max="2023" required>
+                </label><br>
+                <label>
+                  Year at Current Address<span class="required">*</span>: <br>
+                  <input type="number" name="yearAtCurrentAddress" min="0" max="100" required>
+                </label><br>
+                <!-- Additional Information Section for Individual -->
+                <div id="additionalInfoIndividual" style="display: none;">
+                  <h3>Additional Information</h3>
+                  <label class="additional-comments">Additional Comments:</label>
+                  <div class="textarea-container">
+                  <textarea name="additionalComments" rows="4" cols="4"
+                    placeholder="Enter additional comments here" class="description-textarea"></textarea>
+                    <span class="max">(maximum 255 characters)</span>
+                  </div>
+                  
+
+                  <label>Gross Farm Income:<span class="required">*</span></label> <br>
+                  <input type="number" id="grossFarmIncome" name="grossFarmIncome" placeholder="Enter gross farm income"
+                    required>
+
+                  <label>Net Farm Income:<span class="required">*</span></label> <br>
+                  <input type="number" id="netFarmIncome" name="netFarmIncome" placeholder="Enter net farm income"
+                    required>
+
+                  <label>Net Non-Farm Income<span class="required">*</span>:</label> <br>
+                  <input type="number" id="netNonFarmIncome" name="netNonFarmIncome"
+                    placeholder="Enter net non-farm income" required><br>
+
+                  <label>Source of Non-Farm Income:</label>
+                  <table class="income-table">
+                    <thead>
+                      <tr>
+                        <th>Source</th>
+                        <th>Income</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" name="source1"></td>
+                        <td><input type="number" name="income1"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source2"></td>
+                        <td><input type="number" name="income2"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source3"></td>
+                        <td><input type="number" name="income3"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source4"></td>
+                        <td><input type="number" name="income4"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <label>Total Assets:<span class="required">*</span></label>
+                  <input type="number" id="totalAssets" name="totalAssets" placeholder="Enter total assets" required>
+
+                  <label>Total Liabilities:<span class="required">*</span></label>
+                  <input type="number" id="totalLiabilities" name="totalLiabilities"
+                    placeholder="Enter total liabilities" required><br>
+                </div>
+                <div class="button-container">
+                  <button type="submit" class="buttonstyle">Submit</button>
+                </div>
+              </form>
+
+              <!-- Business Fields -->
+              <form id="businessEntityForm" style="display: none;" action="/submit_business_entity_borrower"
+                method="POST" novalidate>
+                <input type="hidden" name="applicantType" value="businessEntity">
+                <label>
+                  Applicant Is<span class="required">*</span>:
+                  <input type="radio" name="applicantIs" value="primaryApplicant" required> Primary Applicant
+                  <input type="radio" name="applicantIs" value="coApplicant"> Co-Applicant
+                  <input type="radio" name="applicantIs" value="guarantor"> Guarantor
+                </label>
+                <br>
+                <div id="relationshipFieldBusiness" style="display: none;">
+                  <label>
+                    Relationship With Primary Applicant<span class="required">*</span>:
+                    <input type="text" name="relationshipWithPrimary" required>
+                  </label>
+                </div><br>
+                <!-- Display Loan ID input field only for Co-Applicant and Guarantor -->
+                <div id="loanIDFieldBusiness" style="display: none;">
+                  <label>
+                    Loan ID (Of Primary Applicant)<span class="required">*</span>:
+                    <input type="number" name="loanID" required>
+                  </label>
+                </div>
+                <label>
+                  Business name<span class="required">*</span>: <br>
+
+                  <input type="text" name="businessName" placeholder="enter your business name" required>
+
+                </label><br>
+                <label>
+                  Business Email<span class="required">*</span>: <br>
+                  <div class="email-container">
+                    <input type="text" name="emailUsername" placeholder="YourEmail" required>
+                    <span>@</span>
+                    <select name="emailDomain" id="emailDomain" required>
+                      <option value="example.com">example.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="yahoo.com">yahoo.com</option>
+                      <!-- Add more domains as needed -->
+                    </select>
+                  </div>
+                </label><br>
+                <label>
+                  Confirm Email<span class="required">*</span>: <br>
+                  <div class="email-container">
+                    <input type="text" name="emailUsername" placeholder="Confirm Your Email" required>
+                    <span>@</span>
+                    <select name="emailDomain" id="emailDomain" required> 
+                      <option value="example.com">example.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="yahoo.com">yahoo.com</option>
+                      <!-- Add more domains as needed -->
+                    </select>
+                  </div>
+                </label><br>
+                <label>
+                  Federal Tax ID#<span class="required">*</span>: <br>
+                  <input type="text" name="taxId" required placeholder="enter federal tax ID">
+                </label><br>
+                <label>
+                  Mobile#<span class="required">*</span>: <br>
+                  <div class="telephone-container">
+                    <select name="countryCode" id="countryCode">
+                      <option value="+1">United States (+1)</option>
+                      <option value="+1">Canada (+1)</option>
+                      <option value="+91">India (+91)</option>
+                      <!-- Add more country codes as needed -->
+                    </select>
+                    <input type="tel" name="businessTelephone" required >
+                  </div>
+                </label><br>
+
+              <!--
+                <label>
+                  Contact details<span class="required">*</span>: <br>
+                   Email and Phone number fields
+                </label><br>
+              -->  
+                <label>
+                  Address of Business<span class="required">*</span>: <br>
+                  <input type="text" name="streetAddress" placeholder="Street Address" required > <br>
+
+
+                  <input type="text" name="city" placeholder="City" required>
+                  <input type="text" name="state" placeholder="State" required>
+                  <br>
+                  <input type="text" name="zipCode" placeholder="Zip Code" required>
+                  <input type="text" name="county" placeholder="County" required>
+                  <!-- Street Address, City, State, Zip Code, County fields -->
+                </label><br>
+                <label>
+                  Contact name & Details<span class="required">*</span>: <br>
+                  <input type="text" name="contactNameDetails" required>
+                </label><br>
+                <label>
+                  Description of Business & Services<span class="required">*</span>:</label> <br>
+                  <div class="textarea-container">
+                  <textarea name="businessDescription" required class="description-textarea"></textarea>
+                
+                
+                <span class="max">(maximum 255 characters)</span>
+              </div>
+                <label>
+                  Business Type:<span class="required">*</span><br>
+                  <label></label><input type="radio" name="businessType" value="corporation" required>
+                  Corporation</label><br>
+                <label></label><input type="radio" name="businessType" value="limitedPartnership" required> Limited
+                Partnership</label><br>
+                <label></label><input type="radio" name="businessType" value="limitedLiability" required> Limited
+                Liability Corporation</label><br>
+                <label></label><input type="radio" name="businessType" value="generalPartnership" required> General
+                Partnership</label><br>
+                <label></label><input type="radio" name="businessType" value="estate" required> Estate</label><br>
+                </label><br>
+
+                <div class="principle-container">
+                  <label>
+                    Principal/Officer<span class="required">*</span>: <br>
+                    <input type="text" name="principalOfficer" required>
+                  </label><br>
+                  <br>
+                  <label>
+                    Home Address<span class="required">*</span>: <br>
+                  </label>
+                  <div class="textarea-container">
+                    <textarea id="homeAddress" name="homeAddress" class="description-textarea" required></textarea>
+                  <span class="max">(maximum 255 characters)</span>
+                  </div>
+                  
+                    Owned %: <br>
+                    <input type="range" name="ownedPercentage" id="ownedPercentageSlider" min="0" max="100"
+                      oninput="updateOwnedPercentage(this.value)">
+                    <span id="ownedPercentageValue">50</span> %
+                  </label>
+                  <label>
+                    Title: <br>
+                    <input type="text" id="ownershipTitle" name="ownershipTitle">
+                  </label>
+                </div>
+
+                <!-- Additional Information Section for Business Entity -->
+                <div id="additionalInfoBusiness" style="display: none;">
+                  <h3>Additional Information</h3>
+                  <label>Additional Comments:</label>
+                  <div class="textarea-container">
+                  <textarea name="additionalComments" rows="4"
+                    placeholder="Enter additional comments here" class="description-textarea"></textarea>
+                    <span class="max">(maximum 255 characters)</span>
+                  </div>
+
+                  <label>Gross Farm Income:</label>
+                  <input type="number" id="grossFarmIncome" name="grossFarmIncome"
+                    placeholder="Enter gross farm income">
+
+                  <label>Net Farm Income:</label>
+                  <input type="number" id="netFarmIncome" name="netFarmIncome" placeholder="Enter net farm income">
+
+                  <label>Net Non-Farm Income:</label>
+                  <input type="number" id="netNonFarmIncome" name="netNonFarmIncome"
+                    placeholder="Enter net non-farm income"><br>
+
+                  <label>Source of Non-Farm Income:</label>
+                  <table class="income-table">
+                    <thead>
+                      <tr>
+                        <th>Source Description</th>
+                        <th>Income</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" name="source1"></td>
+                        <td><input type="number" name="income1"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source2"></td>
+                        <td><input type="number" name="income2"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source3"></td>
+                        <td><input type="number" name="income3"></td>
+
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source4"></td>
+                        <td><input type="number" name="income4"></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" name="source5"></td>
+                        <td><input type="number" name="income5"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <label>Total Assets:<span class="required">*</span></label>
+                  <input type="number" id="totalAssets" name="totalAssets" placeholder="Enter total assets" required>
+
+                  <label>Total Liabilities:<span class="required">*</span></label>
+                  <input type="number" id="totalLiabilities" name="totalLiabilities"
+                    placeholder="Enter total liabilities" required><br>
+                </div>
+                <div class="button-container">
+                  <button type="submit" class="buttonstyle">Submit</button>
+                </div>
+              </form>
+
+              <h2>Add New Loan</h2>
+            
+            
+              <form id="loanForm">
+                <label>
+                  Amount Requested<span class="required">*</span>: <br>
+                  <input type="number" name="amountRequested" required placeholder="enter amount requested">
+                </label>
+                <br>
+                <label>
+                  Projected Loan-to-Value<span class="required">*</span>: <br>
+                  <input type="text" name="loanToValue" required placeholder="enter projected loan-to-value">
+                </label>
+                <br>
+                <label>
+                  Requested Close Date<span class="required">*</span>: <br>
+                  <input type="date" name="closeDate" required>
+                </label>
+                <br>
+                <label>
+                  Payment Frequency<span class="required">*</span>:
+                  <input type="radio" name="paymentFrequency" value="monthly" required> Monthly
+                  <input type="radio" name="paymentFrequency" value="quarterly"> Quarterly
+                  <input type="radio" name="paymentFrequency" value="semi-annual"> Semi-Annual
+                  <input type="radio" name="paymentFrequency" value="annual"> Annual
+                </label>
+                <br>
+                <label>
+                  Loan Purpose<span class="required">*</span>:
+                  <input type="radio" name="loanPurpose" value="purchaseRealEstate" required> Purchase Real Estate
+                  <input type="radio" name="loanPurpose" value="refinanceRealEstate"> Refinance Real Estate
+                  <input type="radio" name="loanPurpose" value="cashOut"> Cash Out
+                  <input type="radio" name="loanPurpose" value="other"> Other
+                  <br>
+                  If Other, Specify<span class="required">*</span>: <br>
+                  <input type="text" name="otherPurpose" placeholder="Specify other purpose"><br> 
+                </label>
+                <br>
+                <label class="table-label">
+                  Use of Funds:
+                  <table id="useOfFundsTable">
+                      <thead>
+                          <tr>
+                            <th colspan="2">Source of Cash</th>
+                            <th colspan="2">Use of Cash</th>
+                          </tr>
+                          <tr>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                    <tbody>
+                      <tr>
+                          <!-- Source of Cash -->
+                          <td><input type="text" name="sourceOfCash1Amount" required></td>
+                          <td><input type="text" name="sourceOfCash1Description" required></td>
+                          
+                          <!-- Use of Cash -->
+                          <td><input type="text" name="useOfCash1Amount" required></td>
+                          <td><input type="text" name="useOfCash1Description" required></td>
+                        </tr>
+                        <tr>
+                          <!-- Source of Cash -->
+                          <td><input type="text" name="sourceOfCash2Amount"></td>
+                          <td><input type="text" name="sourceOfCash2Description"></td>
+                          
+                          <!-- Use of Cash -->
+                          <td><input type="text" name="useOfCash2Amount"></td>
+                          <td><input type="text" name="useOfCash2Description"></td>
+                        </tr>
+                        <tr>
+                          <!-- Source of Cash -->
+                          <td><input type="text" name="sourceOfCash3Amount"></td>
+                          <td><input type="text" name="sourceOfCash3Description"></td>
+                          
+                          <!-- Use of Cash -->
+                          <td><input type="text" name="useOfCash3Amount"></td>
+                          <td><input type="text" name="useOfCash3Description"></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </label>
+                <br>
+                <label>
+                  Loan Product<span class="required">*</span>: <br>
+                  <input type="text" name="loanProduct" placeholder="e.g. 20 yr fixed" required>
+                </label>
+                <br>
+                <label>
+                  Requested Years Amortized<span class="required">*</span>:
+                  <input type="radio" name="yearsAmortized" value="5" required> 5
+                  <input type="radio" name="yearsAmortized" value="10"> 10
+                  <input type="radio" name="yearsAmortized" value="15"> 15
+                  <input type="radio" name="yearsAmortized" value="20"> 20
+                  <input type="radio" name="yearsAmortized" value="25"> 25
+                  <input type="radio" name="yearsAmortized" value="30"> 30
+                </label>
+                <br>
+              </div>
+              </form>
+
+
+
+              <h2>Add New Collateral</h2>
+                        
+                        
+              <form id="collateralForm">
+
+                <div class="input-container">
+                <label>
+                  State of Property Location<span class="required">*</span>: <br>
+                  <input type="text" name="propertyState" class="input-half" placeholder="State" required>
+                </label>
+                <span class="max">(maximum 35 characters)</span>
+              </div>
+              <div class="input-container">
+
+                <label class="label-align-right">
+                  County of Property Location<span class="required">*</span>: <br>
+                  <input type="text" name="propertyCounty" class="input-half" placeholder="County" required>
+                </label>
+                <span class="max">(maximum 35 characters)</span>
+              </div>
+                <br>
+                <div class="location-details-container">
+                  
+                  <div class="location-details">
+                    <div class="input-container">
+                    <label>
+                      Section<span class="required">*</span>: <br>
+                      <input type="text" name="section" class="input-third" placeholder="Section" required>
+                    </label>
+                    <span class="max">(maximum 35 characters)</span>
+                  </div>
+                  <div class="input-container">
+                    <label>
+                      Township<span class="required">*</span>: <br>
+                      <input type="text" name="township" class="input-third" placeholder="Township" required>
+                    </label>
+                    <span class="max">(maximum 35 characters)</span>
+
+                  </div>
+                  <div class="input-container">
+
+                    <label>
+                      Range<span class="required">*</span>: <br>
+                      <input type="text" name="range" class="input-third" placeholder="Range" required>
+                    </label><span class="max">(maximum 35 characters)</span><br>
+
+                    </div>
+                    
+                    <label>OR</label>
+                    
+                  </div><br>
+                  <div class="input-container">
+                  <label class="location-details-label">Abbreviated Legal Description<span class="required">*</span>:</label> <br>
+                    <input type="text" name="abriviatedlegaldescription" placeholder="Abbreviated Legal Description" required>
+                    <span class="max">(maximum 35 characters)</span> 
+                  </div>
+                </div>
+        
+                <table id="appraisedValueTable">
+                  <thead>
+                    <tr>
+                      <th>Estimated Appraised Value Of:</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Land</td>
+                      <td><input type="number" name="landValue"></td>
+                    </tr>
+                    <tr>
+                      <td>Residence</td>
+                      <td><input type="number" name="residenceValue"></td>
+                    </tr>
+                    <tr>
+                      <td>All Other Improvements</td>
+                      <td><input type="number" name="improvementsValue"></td>
+                    </tr>
+                    <tr>
+                      <td>Permanent Plantings</td>
+                      <td><input type="number" name="plantingsValue"></td>
+                    </tr>
+                    <tr id="totalValueRow">
+                      <td>Total Value:</td>
+                      <td><b id="totalValue">0</b></td>
+                    </tr> 
+                  </tbody>
+                </table>
+                <h3>Property Agreements</h3>
+                <label>
+                  Are there any leases or rental agreements on the property?<span class="required">*</span>
+                  <input type="radio" name="propertyLeases" value="yes" required> Yes
+                  <input type="radio" name="propertyLeases" value="no"> No
+                </label>
+                <br>
+                <label>
+                  If yes, are there any leases or rental agreements for which the remaining term (including any unexercised renewal options or rights) is 3 years or more?<span class="required">*</span>
+                  <input type="radio" name="remainingTerm" value="yes" required> Yes
+                  <input type="radio" name="remainingTerm" value="no"> No
+                </label>
+                <br>
+                <label>
+                  Are there any agreements for the property (including but not limited to leases and rental agreements) that include a purchase option, purchase right, right of first refusal, right of first offer or any similar right or offer?<span class="required">*</span>
+                  <input type="radio" name="purchaseAgreements" value="yes"> Yes
+                  <input type="radio" name="purchaseAgreements" value="no"> No
+                </label>
+                <br>
+        
+                <!-- Leases and Encumbrances -->
+                <h3>Leases and Encumbrances</h3>
+                <label><input type="checkbox" name="manureEasements"> Manure Easements</label><br>
+                <label><input type="checkbox" name="windLeases"> Wind Leases, Easements or Agreements</label><br>
+                <label><input type="checkbox" name="cellTower"> Cell Tower</label><br>
+                <label><input type="checkbox" name="oilMineralGasLeases"> Oil/Mineral or Gas Leases(s)</label><br>
+                <label><input type="checkbox" name="otherLeases"> Other (describe): <br>
+                <input type="text" name="otherLeasesDescription"></label><br>
+        
+                <!-- Ownership Information -->
+                <label>
+                  Who owns (or will own) the collateral?<span class="required">*</span> <br>
+                  <input type="text" name="ownership" class="input-half" required>
+                </label>
+                <br>
+        
+                <!-- Estimated Cash Rent and Real Estate Taxes -->
+                <label>
+                  Estimated Cash Rent/Acre<span class="required">*</span>: <br> $ <input type="number" name="cashRent" class="input-half" required><br>
+                  Estimated Real Estate Taxes/Acre<span class="required">*</span>: <br> $ <input type="number" name="realEstateTaxes" class="input-half" required>
+                </label>
+        
+                <!-- Table for Acres -->
+                <h3>Tillable Acres</h3>
+                <table id="acresTable">
+                  <thead>
+                    <tr>
+                      <th>Tillable Acres</th>
+                      <th>No. of Irrigated Acres</th>
+                      <th>Irrigated Value per Acre</th>
+                      <th>No. of Non-Irrigated Acres</th>
+                      <th>Non-Irrigated Value per Acre</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pasture Acres:</td>
+                      <td><input type="number" name="pastureIrrigatedAcres"></td>
+                      <td><input type="number" name="pastureIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="pastureNonIrrigatedAcres"></td>
+                      <td><input type="number" name="pastureNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <tr>
+                      <td>CRP Acres:</td>
+                      <td><input type="number" name="crpIrrigatedAcres"></td>
+                      <td><input type="number" name="crpIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="crpNonIrrigatedAcres"></td>
+                      <td><input type="number" name="crpNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <tr>
+                      <td>Wooded Acres:</td>
+                      <td><input type="number" name="woodedIrrigatedAcres"></td>
+                      <td><input type="number" name="woodedIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="woodedNonIrrigatedAcres"></td>
+                      <td><input type="number" name="woodedNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <tr>
+                      <td>Permanent Plantings Acres:</td>
+                      <td><input type="number" name="plantingsIrrigatedAcres"></td>
+                      <td><input type="number" name="plantingsIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="plantingsNonIrrigatedAcres"></td>
+                      <td><input type="number" name="plantingsNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <tr>
+                      <td>Timberland Acres:</td>
+                      <td><input type="number" name="timberlandIrrigatedAcres"></td>
+                      <td><input type="number" name="timberlandIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="timberlandNonIrrigatedAcres"></td>
+                      <td><input type="number" name="timberlandNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <tr>
+                      <td>Others:</td>
+                      <td><input type="number" name="othersIrrigatedAcres"></td>
+                      <td><input type="number" name="othersIrrigatedValuePerAcre"></td>
+                      <td><input type="number" name="othersNonIrrigatedAcres"></td>
+                      <td><input type="number" name="othersNonirrigatedValuePerAcre"></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    <tr id="totalRow">
+                      <td>Total Acres:</td>
+                      <td><b id="totalIrrigatedAcres">0</b></td>
+                      <td><b id="totalIrrigatedValue"></b></td>
+                      <td><b id="totalNonIrrigatedAcres">0</b></td>
+                      <td><b id="totalNonirrigatedValue"></b></td>
+                    </tr>            
+                  </tbody>
+                </table>
+                <label>
+                  Total Acres<span class="required">*</span>: <input type="number" name="totalacres" class="input-half" required>
+                </label>
+                <!-- Radio buttons -->
+                <h3>Improvements</h3>
+                <label>
+                  Are there any improvements on the collateral?<span class="required">*</span>
+                  <input type="radio" name="improvements" value="yes"> Yes
+                  <input type="radio" name="improvements" value="no"> No
+                </label><br>
+                <label>
+                  Are there any permanent plantings on the collateral?<span class="required">*</span>
+                  <input type="radio" name="permanentplantings" value="yes"> Yes
+                  <input type="radio" name="permanentplantings" value="no"> No
+                </label><br>
+                <label>
+                  If Yes, Do the improvements represent a significant portion of repayment income?<span class="required">*</span>
+                  <input type="radio" name="irepayment" value="yes"> Yes
+                  <input type="radio" name="irepayment" value="no"> No
+                </label><br>
+                <label>
+                  If yes, do the permanent plantings represent a significant portion of repayment income?<span class="required">*</span>
+                  <input type="radio" name="pprepayment" value="yes"> Yes
+                  <input type="radio" name="pprepayment" value="no"> No
+                </label><br>
+                <label>
+                  Have any improvements, repairs, or work taken place on the property within the last six months?<br>
+             (Including any that are currently underway or that will commence shortly)? <span class="required">*</span>
+                  <input type="radio" name="sixmonthwork" value="yes"> Yes
+                  <input type="radio" name="sixmonthwork" value="no"> No
+                </label><br>
+                <label>
+                  Is there a residence on the collateral? <span class="required">*</span>
+                  <input type="radio" name="residence" value="yes"> Yes
+                  <input type="radio" name="residence" value="no"> No
+                </label><br>
+        
+                <!-- Text box -->
+                <div class="textarea-container">
+                <label>
+                  If there are any improvements and/or permanent plantings, provide a brief description.<br>
+                  <textarea name="description" class="description-textarea" style="width: 70%;"></textarea>
+                  
+                </label><span class="max">(maximum 255 characters)</span>
+              </div>
+
+        
+                <!-- Water and Environmental Information -->
+                <label>
+                  Water, Irrigation or Well Rights/Restrictions:
+                  <input type="radio" name="waterRights" value="yes"> Yes
+                  <input type="radio" name="waterRights" value="no"> No
+                </label><br>
+                <div class="textarea-container">
+                <label>
+                  If yes, please describe:                                                                   <br>
+                  
+                  <textarea name="waterRightsDescription" class="description-textarea" style="width: 70%;" ></textarea>
+                  
+                </label>
+                <span class="max">(maximum 255 characters)</span>
+
+              </div>
+                
+                <label>
+                  Environmental Hazard, Known or Suspected:
+                  <input type="radio" name="environmentalHazard" value="yes"> Yes
+                  <input type="radio" name="environmentalHazard" value="no"> No
+                </label>
+                <div class="textarea-container">
+                <label>
+                  If yes, please describe:<br>
+                  <textarea name="environmentalHazardDescription" style="width: 70%;"></textarea>
+
+                </label>
+                <span class="max">(maximum 255 characters)</span></div>
+                <div class="button-container">
+        
+                <button type="submit" class="buttonstyle">Submit</button>
+              </div>
+              </form>
+
+              <h2>Other Infromation</h2>
+              <div class="scrollable-content">
+                <div class="applicant-questions">
+                    <b>The following questions apply to all applicants:</b><br><br>
+                    <table class="question-table">
+                      <tr>
+                        <td>Are there any unjustified judgments against you? <span class="required">*</span></td>
+                        <td><input type="radio" name="judgments" value="yes" required> Yes <input type="radio" name="judgments"
+                            value="no"  required> No</td>
+    
+                      </tr>
+                      <tr>
+                        <td>Are you a defendant in any lawsuits or pending lawsuits?<span class="required">*</span></td>
+                        <td><input type="radio" name="lawsuits" value="yes" required> Yes <input type="radio" name="lawsuits"
+                            value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Are any accounts past due?<span class="required">*</span></td>
+                        <td><input type="radio" name="pastDue" value="yes" required> Yes <input type="radio" name="pastDue"
+                            value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Have you ever declared bankruptcy?<span class="required">*</span></td>
+                        <td><input type="radio" name="bankruptcy" value="yes"required> Yes <input type="radio" name="bankruptcy"
+                            value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Have you had any property foreclosed or transferred by a deed in lieu of foreclosure in the past
+                          7 years?<span class="required">*</span></td>
+                        <td><input type="radio" name="foreclosure" value="yes" required> Yes <input type="radio" name="foreclosure"
+                            value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Do any borrowers have assets pledged as security for debt of others?<span class="required">*</span></td>
+                        <td><input type="radio" name="assetsPledged" value="yes" required> Yes <input type="radio"
+                            name="assetsPledged" value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Do any borrowers have contingent liabilities or have they endorsed or guaranteed notes for
+                          others?<span class="required">*</span></td>
+                        <td><input type="radio" name="contingentLiabilities" value="yes" required> Yes <input type="radio"
+                            name="contingentLiabilities" value="no" required > No</td>
+                      </tr>
+                      <tr>
+                        <td>Are any borrowers obligated to pay alimony or child support?<span class="required">*</span></td>
+                        <td><input type="radio" name="alimonyChildSupport" value="yes" required> Yes <input type="radio"
+                            name="alimonyChildSupport" value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Do any borrowers have a > 25% interest in other companies?<span class="required">*</span></td>
+                        <td><input type="radio" name="interestInCompanies" value="yes" required> Yes <input type="radio"
+                            name="interestInCompanies" value="no" required> No</td>
+                      </tr>
+                      <tr>
+                        <td>Is there a residence on the collateral?<span class="required">*</span></td>
+                        <td><input type="radio" name="residenceOnCollateral" value="yes" required> Yes <input type="radio"
+                            name="residenceOnCollateral" value="no" required> No</td>
+                      </tr>
+                    </table>
+                    <br><br>
+    
+                    <label>If you answered "Yes" to any of the above questions, please provide details:<span class="required">*</span></label>
+                    <div class="textarea-container">
+                    <label>
+
+                    <textarea name="details" id="details" ></textarea><br>
+                  </label>
+                  <span class="max">(maximum 255 characters)</span>
+
+              </div>
+
+    
+                    <label>Existing Client of originator?<span class="required">*</span></label>
+                    <input type="radio" name="existingClient" value="yes" id="yesRadio"> Yes (Year Begin: <input
+                      type="number" name="existingClientYear" id="yearInput">)
+                    <input type="radio" name="existingClient" value="no" id="noRadio"> No
+                    <br>
+                    <label>Total acres owned:<span class="required">*</span></label>
+                    <input type="number" name="totalAcresOwned"><br>
+                    <label>Total acres rented:<span class="required">*</span></label>
+                    <input type="number" name="totalAcresRented"><br>
+                    
+                    <h1>Previously Uploaded Documents</h1>
+                    <table id="ExistingDocs">
+                      <thead>
+                        <tr>
+                          <th>DOC_TYPE </th>
+                          <th>DOC_NAME</th>
+                          <th>DOC_DATE</th>
+                          <th>FILE_NAME</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="doctablebody">
+                
+                      </tbody>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/addNewBorrower.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/addNewCollateral.js"></script>
+
+
+</body>
+
+</html>
